@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
-#inlcude <climits>
+#include <climits>
 #include <vector>
 #include <algorithm>
 using namespace std;
