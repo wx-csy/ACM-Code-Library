@@ -1,0 +1,86 @@
+\input{../shared/head.tex}
+\newcommand{\BookNo}{2}
+\newcommand{\BookTitle}{Number Theory \\[0.2cm] Linear Algebra \\[0.4cm] Combinatorics}
+\begin{document}
+\input{../shared/cover.tex}
+\setmainfont{Times New Roman}
+\setlength{\parskip}{0.0in}
+\tableofcontents
+\setlength{\parskip}{0.1in}
+\newevenpage
+% New codebook
+\section{Number Theory}
+\subsection{Modulo operations}
+\subsubsection{Modular exponentiation (fast power-mod)} \label{powmod}
+Calculate $b^e \bmod m$. \par
+\Warning Cannot be performed on \lstinline|long long|, unless use \Require{mulmod}. \par
+\textbf{Time complexity:} $O(\log e)$ \par
+\lstinputlisting[language=c++]{number-theory/powmod.cpp}
+
+\subsubsection{Mathematical modulo operation}
+The result has the same sign as divisor. \par
+\lstinputlisting[language=c++]{number-theory/mathmod.cpp}
+
+\subsubsection{Modular multiplication on long long} \label{mulmod}
+Calculate $ab \bmod m$, where $a, b, m$ are \lstinline|long long| integers. \par
+\Warning $a, b, m$ must be non-negative. \par
+\textbf{Time complexity:} $O(\log b)$ \par
+\lstinputlisting[language=c++]{number-theory/mulmod.cpp}
+
+\subsection{Extended Euclidian algorithm} % Stanford'
+Solve $ax + by = g = \gcd(a,b)$ w.r.t. $x, y$. \par
+If $(x_0, y_0)$ is an integer solution of $ax + by = g = \gcd(x,y)$, then every integer solution of it can be written as $(x_0 + kb', y_0 - ka')$, where $a' = a/g$, $b' = b/g$, and $k$ is arbitrary integer. \par
+\Warning $x$ and $y$ must be positive. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4cm} p{7cm}}
+  \lstinline|exgcd(a, b, g, x, y)| & Find a special solution to $ax + by = g = \gcd(a, b)$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(\log \min \{a,b\})$ \par
+\lstinputlisting[language=c++]{number-theory/exgcd.cpp}
+
+\subsubsection{Modular multiplicative inverse}
+An integer $a$ has modular multiplicative inverse w.r.t. the modulus $m$, iff $\gcd(a, m) = 1$. Assume the inverse is $x$, then
+$$ ax \equiv 1 \mod m \text{.}$$
+Call \lstinline|exgcd(a, m, g, x, y)|, if $g = 1$, $x + km$ is the modular multiplicative inverse of $a$ w.r.t. the modulus $m$. \par
+\lstinputlisting[language=c++]{number-theory/minv.cpp}
+
+\subsection{Primality test (Miller-Rabin)}
+Test whether $n$ is a prime. \par
+The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) should be \\
+\begin{tabular}{p{6cm} p{5cm}}
+  \lstinline|{2}| & when $n < 2,047$. \\
+  \lstinline|{2, 7, 61}| & when $n < 4,759,123,141$ ($2^{32}$) . \\
+  \lstinline|{2, 3, 5, 7, 11}| & when $n < 2.1 \times 10^{12}$. \\
+  \lstinline|{2, 325, 9375, 28178, 450775, 9780504, 1795265022}| & when $n < 2^{64}$.
+\end{tabular} \par
+\Warning When $n$ exceeds the range of \lstinline|int|, the mul-mod and pow-mod operations should be rewritten. \par
+\textbf{Requirement:} \\
+\Require{powmod} \par
+\textbf{Time complexity:} $O(\log n)$ \par
+\lstinputlisting[language=c++]{number-theory/miller-rabin.cpp}
+
+\subsection{Sieve of Eratosthenes}
+
+\subsection{Chinese remainder theorem}
+
+
+\subsection{Quadratic residue}
+\subsubsection{Legendre symbol}
+For non-negative integer $a$ and \textbf{odd} prime $p$, the Legendre symbol is defined as
+$$ \left( \frac{a}{p} \right) = \begin{cases} 0 & \text{if } a \mid p  \\ 1 & \text{if } a \nmid p \text{ and } a \text{ is a quadratic residue modulo } p \\ p-1 & \text{if } a \nmid p \text{ and } a \text{ is a quadratic non-residue modulo } p \end{cases} $$
+Call \lstinline|powmod(a, (p-1)/2, p)| to calculate Legendre symbol.
+\section{Linear Algebra}
+\subsection{Modular exponentiation of matrices}
+Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wise.\par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8.5cm}}
+  \lstinline|n| & Order of matrices. \\
+  \lstinline|modular| & The divisor in modulo operations. \\
+  \lstinline|m_powmod(b, e)| & Calculate $b^e \bmod modular$. The result is stored in \lstinline|r|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n^3 \log e)$ \par
+\lstinputlisting[language=c++]{linear-algebra/matrix_powmod.cpp}
+
+\section{Combinatorics}
+\subsection{P\'olya enumeration theorem}
+\end{document}

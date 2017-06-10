@@ -1,0 +1,16 @@
+\input{../shared/head.tex}
+\newcommand{\BookNo}{0}
+\newcommand{\BookTitle}{Miscellaneous}
+\begin{document}
+\input{../shared/cover.tex}
+\setmainfont{Times New Roman}
+\setlength{\parskip}{0.0in}
+\tableofcontents
+\setlength{\parskip}{0.1in}
+\newevenpage
+% New codebook
+\section{General}
+\subsection{Template} % Stanford'
+\lstinputlisting[language=c++]{general/template.cpp}
+
+\end{document}

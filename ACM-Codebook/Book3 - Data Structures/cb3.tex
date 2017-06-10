@@ -1,0 +1,24 @@
+\input{../shared/head.tex}
+\newcommand{\BookNo}{3}
+\newcommand{\BookTitle}{Data Structures}
+\begin{document}
+\input{../shared/cover.tex}
+\setmainfont{Times New Roman}
+\setlength{\parskip}{0.0in}
+\tableofcontents
+\setlength{\parskip}{0.1in}
+\newevenpage
+% New codebook
+\section{Miscellaneous Data Structures}
+\subsection{Union-find set}
+Data structure for disjoint sets. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|init(n)| & Initialize the sets from 0 to $n$, each includes one element. \\
+  \lstinline|find(x)| & Return the representative of the set containing $x$. \\
+  \lstinline|unite(u, v)| & Unite the two sets containing $u$ and $v$. Return \lstinline|false| if $u$ and $v$ are already in the same set; otherwise \lstinline|true|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for find and union. \par
+\lstinputlisting[language=c++]{misc/ufs.cpp}
+
+\end{document}

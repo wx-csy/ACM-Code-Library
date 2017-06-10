@@ -1,0 +1,63 @@
+\input{../shared/head.tex}
+\newcommand{\BookNo}{1}
+\newcommand{\BookTitle}{Graph Theory}
+\begin{document}
+\input{../shared/cover.tex}
+\setmainfont{Times New Roman}
+\setlength{\parskip}{0.0in}
+\tableofcontents
+\setlength{\parskip}{0.1in}
+\newevenpage
+% New codebook
+\section{Shortest Paths}
+
+\subsection{Single-source shortest paths}
+\subsubsection{Dijkstra} \label{dijkstra}
+Dijkstra's algorithm with binary heap. \par
+\Cross Can't be performed on graphs with negative weights.\par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|add_edge(e)| & Add edge $e$ to the graph. \\
+  \lstinline|dijkstra(src)| & Calculate SSSP from $src$.  \\
+  \lstinline|d[x]| & distance to $x$ \\
+  \lstinline|p[x]| & last edge to $x$ in SSSP  \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|E| \log |V|)$ \par
+\lstinputlisting[language=c++]{shortest-paths/dijkstra.cpp}
+
+\subsubsection{SPFA}
+Shortest path faster algorithm. (Improved version of Bellman-Ford algorithm) \par
+This code is used to replace \lstinline|void dijkstra(int src)|. \par
+\Tick Can be performed on graphs with negative weights. \\
+\Warning For some specially constructed graphs, this algorithm is very slow. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|spfa(src)| & Calculate SSSP from $src$.  \\
+\end{tabular} \par
+\textbf{Requirement:} \\
+\Require{dijkstra} \par
+\textbf{Time complexity:} $O(k|E|)$, generally $k<2$ \par
+\lstinputlisting[language=c++]{shortest-paths/spfa.cpp}
+
+\subsection{All-pairs shortest paths (Floyd-Warshall)}
+Floyd-Warshall algorithm. \par
+\Tick Can be performed on graphs with negative weights. \\
+\Warning \textbf{Self-loops} and \textbf{multiple edges} must be specially judged. \\
+\Warning If the weights of edges might exceed \lstinline|LLONG_MAX / 2|, the line \lstinline|(*)| should be added. \par
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|init()| & Initialize the distances of the edges from 0 to V.  \\
+  \lstinline|floyd()| & Calculate APSP. \\
+  \lstinline|d[i][j]| & distance from $i$ to $j$ \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|V|^3)$ \par
+\lstinputlisting[language=c++]{shortest-paths/floyd.cpp}
+
+\section{Spanning tree}
+\subsection{Minimum spanning tree}
+\subsubsection{Kruskal's algorithm}
+
+\subsubsection{Prim's algorithm}
+
+\section{Flow Network}
+
+\end{document}
