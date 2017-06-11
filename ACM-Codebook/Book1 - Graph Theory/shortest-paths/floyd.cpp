@@ -4,17 +4,17 @@ int V;
 LL d[MAXV][MAXV];
 
 void init(){
-    for (int i = 0; i <= V; i++){
-        for (int j = 0; j <= V; j++)
+    Rep (i, V){
+        Rep (j, V)
             d[i][j] = INF;
         d[i][i] = 0;
     }
 }
 
 void floyd(){
-    for (int k = 0; k <= V; k++)
-        for (int i = 0; i <= V; i++)
-            for (int j = 0; j <= V; j++)
+    Rep (k, V)
+        Rep (i, V)
+            Rep (j, V)
                 // ! (*) if (d[i][k] < INF && d[k][j] < INF)
                 d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
 }

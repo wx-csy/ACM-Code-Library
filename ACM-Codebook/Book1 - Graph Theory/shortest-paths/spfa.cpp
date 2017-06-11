@@ -8,7 +8,7 @@
         q.push(src); inq[src] = true;
         while (!q.empty()){
             int u = q.front(); q.pop(); inq[u] = false;
-            for (int i = 0; i < adj[u].size(); i++){
+            rep (i, adj[u].size()){
                 edge e = adj[u][i];
                 if (d[e.v] > d[u] + e.w){
                     d[e.v] = d[u] + e.w;

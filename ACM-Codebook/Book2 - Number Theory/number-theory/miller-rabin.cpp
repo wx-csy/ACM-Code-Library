@@ -7,7 +7,7 @@ bool test(LL n){
     for (int i=0; a[i] < n; i++){
         x = powmod(a[i], d, n);
         if (x == 1 || x == n-1) goto next;
-        for (int i = 0; i < r; i++) {
+        rep (i, r) {
             x = (x * x) % n;
             if (x == n-1) goto next;
         }

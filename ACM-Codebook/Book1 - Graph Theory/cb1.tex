@@ -17,6 +17,7 @@ Dijkstra's algorithm with binary heap. \par
 \Cross Can't be performed on graphs with negative weights.\par
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|V| & Number of vertices. \\
   \lstinline|add_edge(e)| & Add edge $e$ to the graph. \\
   \lstinline|dijkstra(src)| & Calculate SSSP from $src$.  \\
   \lstinline|d[x]| & distance to $x$ \\
@@ -52,11 +53,25 @@ Floyd-Warshall algorithm. \par
 \textbf{Time complexity:} $O(|V|^3)$ \par
 \lstinputlisting[language=c++]{shortest-paths/floyd.cpp}
 
-\section{Spanning tree}
+\section{Spanning Tree}
 \subsection{Minimum spanning tree}
 \subsubsection{Kruskal's algorithm}
 
 \subsubsection{Prim's algorithm}
+
+\section{Depth-first Search}
+\subsection{Strongly connected components, condensation (Tarjan)}
+Find strongly connected components and compute the component graph. \par
+\Warning The component graph may contain \textbf{multiple edges}. \par
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|V| & number of vertices \\
+  \lstinline|scc[i]| & the SCC that $i$ belongs to, numbered from 1. \\
+  \lstinline|sccn| & number of SCCs \\
+  \lstinline|find_scc()| & Find all SCCs. \\
+  \lstinline|contract()| & Compute component graph. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|V| + |E|)$ \par
+\lstinputlisting[language=c++]{dfs/scc.cpp}
 
 \section{Flow Network}
 

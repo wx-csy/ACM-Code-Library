@@ -1,5 +1,3 @@
-#include <queue>
-
 const int INF = 0x7f7f7f7f;
 const int MAXV = 10005;
 const int MAXE = 500005;
@@ -32,7 +30,7 @@ struct graph{
             int u = q.top().second; q.pop();
             if (done[u]) continue;
             done[u] = true;
-            for (int i = 0; i < adj[u].size(); i++){
+            rep (i, adj[u].size()){
                 edge e = adj[u][i];
                 if (d[e.v] > d[u] + e.w){
                     d[e.v] = d[u] + e.w;

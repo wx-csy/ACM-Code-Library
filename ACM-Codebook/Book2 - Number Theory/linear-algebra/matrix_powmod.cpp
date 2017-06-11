@@ -7,10 +7,10 @@ struct matrix{
 
     void operator *=(matrix& a){
         static LL t[MAXN][MAXN];
-        for (int i=0; i<n; i++){
-            for (int j=0; j<n; j++){
+        Rep (i, n){
+            Rep (j, n){
                 t[i][j] = 0;
-                for (int k=0; k<n; k++){
+                Rep (k, n){
                     t[i][j] += (m[i][k] * a.m[k][j]) % modular;
                     t[i][j] %= modular;
                 }
@@ -23,7 +23,7 @@ struct matrix{
 matrix r;
 void m_powmod(matrix& b, LL e){
     memset(r.m, sizeof(r.m), 0);
-    for (int i=0; i<n; i++)
+    Rep(i, n)
         r.m[i][i] = 1;
     while (e){
         if (e & 1) r *= b;
