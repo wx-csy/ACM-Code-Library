@@ -10,7 +10,36 @@
 \newevenpage
 % New codebook
 \section{General}
-\subsection{Template} % Stanford'
+\subsection{Template}
 \lstinputlisting[language=c++]{general/template.cpp}
 
+\section{String}
+\subsection{Trie tree} \label{trie}
+Support insertion and search for a set of words. \par
+\Warning If duplicate word exists, only the last one is preserved. \\
+\Warning The tag must not be 0, which is considered as not being a word. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|id(c)| & Covert character to its id.  \\
+  \lstinline|add(s, t)| & Add word $s$ into Trie, where $t$ is the tag attached to $s$.  \\
+  \lstinline|search(s)| & Search for word $s$. Return the tag attached to $s$ if found; otherwise return 0.  \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(l|\Sigma|)$ for insertion, $O(l)$ for search. \par
+\lstinputlisting[language=c++]{string/trie.cpp}
+
+\subsection{Aho-Corasick automaton}
+Automaton for multi-pattern matching. \par
+\Warning See the warnings of \nameref{trie}. \\
+\Warning If a word has too many suffixes, the automaton might run slow. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|add(s, t)| & Add word $s$ into Trie, where $t$ is the tag attached to $s$.  \\
+  \lstinline|construct()| & Construct the automaton after all words added. \\
+  \lstinline|find(text)| & Find words in text. \\
+  \lstinline|found(pos, j)| & Report a word found in node $j$, the last character of which is at \lstinline|pos|. \\
+\end{tabular} \par
+\textbf{Requirement:} \\
+\Require{trie} \par
+\textbf{Time complexity:} $O(l|\Sigma|)$ for insertion and construction, $O(l)$ for finding, provided the number of suffixes of a word is constant. \par
+\lstinputlisting[language=c++]{string/aho-corasick.cpp}
 \end{document}

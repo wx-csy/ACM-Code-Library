@@ -42,7 +42,7 @@ This code is used to replace \lstinline|void dijkstra(int src)|. \par
 
 \subsection{All-pairs shortest paths (Floyd-Warshall)}
 Floyd-Warshall algorithm. \par
-\Tick Can be performed on graphs with negative weights. \\
+\Tick Can be performed on graphs with negative weights. To detect negative cycle, one can inspect the diagonal, and the presence of a negative number indicates that the corresponding vertex lies on some negative cycle. \\
 \Warning \textbf{Self-loops} and \textbf{multiple edges} must be specially judged. \\
 \Warning If the weights of edges might exceed \lstinline|LLONG_MAX / 2|, the line \lstinline|(*)| should be added. \par
 \begin{tabular}{p{2.5cm} p{9cm}}
