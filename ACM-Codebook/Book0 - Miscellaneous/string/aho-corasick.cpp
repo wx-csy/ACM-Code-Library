@@ -36,7 +36,7 @@ struct AC : Trie{
         }
     }
 
-    void find(const char* text){
+    void find(const char* text){ // must be called after construct()
         int p = 0, c, len = strlen(text);
         rep (i, len){
             c = id(text[i]);

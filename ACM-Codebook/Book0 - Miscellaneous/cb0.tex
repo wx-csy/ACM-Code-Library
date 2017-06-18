@@ -14,7 +14,18 @@
 \lstinputlisting[language=c++]{general/template.cpp}
 
 \section{String}
-\subsection{Trie tree} \label{trie}
+\subsection{Knuth-Morris-Pratt algorithm}
+Single-pattern matching. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|construct(p)| & Construct the failure table of pattern \lstinline|p|. \\
+  \lstinline|match(t, p)| & Match pattern \lstinline|p| in text \lstinline|t|. \\
+  \lstinline|found(pos)| & Report the pattern found at \lstinline|pos|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(l)$. \par
+\lstinputlisting[language=c++]{string/kmp.cpp}
+
+\subsection{Trie} \label{trie}
 Support insertion and search for a set of words. \par
 \Warning If duplicate word exists, only the last one is preserved. \\
 \Warning The tag must not be 0, which is considered as not being a word. \par
