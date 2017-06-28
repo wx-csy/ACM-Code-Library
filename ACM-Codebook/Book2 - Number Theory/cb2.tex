@@ -42,7 +42,9 @@ If $(x_0, y_0)$ is an integer solution of $ax + by = g = \gcd(x,y)$, then every 
 An integer $a$ has modular multiplicative inverse w.r.t. the modulus $m$, iff $\gcd(a, m) = 1$. Assume the inverse is $x$, then
 $$ ax \equiv 1 \mod m \text{.}$$
 Call \lstinline|exgcd(a, m, g, x, y)|, if $g = 1$, $x + km$ is the modular multiplicative inverse of $a$ w.r.t. the modulus $m$. \par
-\lstinputlisting[language=c++]{number-theory/minv.cpp}
+\lstinputlisting[language=c++]{number-theory/minv.cpp} \par
+Or, by Fermat's little theorem ($a^p \equiv a \mod p$), when $m$ is a prime, the multiplicative can also be written as 
+$a^{-1} = \left(a^{p-2} \bmod p\right) \text{.}$
 
 \subsection{Primality test (Miller-Rabin)}
 Test whether $n$ is a prime. \par
