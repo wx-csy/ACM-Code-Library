@@ -9,9 +9,43 @@
 \setlength{\parskip}{0.1in}
 \newevenpage
 % New codebook
+\section{Segment Tree}
+\subsection{Binary indexed tree}
+\subsubsection{Point update, range query} \label{bit_purq}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|init(n)| & Initialize the tree with 0. \\
+  \lstinline|add(n, x)| & Add the $n$-th element by $x$. \\
+  \lstinline|sum(n)| & Return the sum of the first $n$ elements.
+\end{tabular} \par
+\textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for each update and query. \par
+\lstinputlisting[language=c++]{misc/bit_purq.cpp}
+
+\subsubsection{Range update, point query}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|init(n)| & Initialize the tree with 0. \\
+  \lstinline|add(n, x)| & Add the first $n$ element by $x$. \\
+  \lstinline|query(n)| & Return the value of the $n$-th element.
+\end{tabular} \par
+\textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for each update and query. \par
+\lstinputlisting[language=c++]{misc/bit_rupq.cpp}
+
+\subsubsection{Range update, range query}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8.5cm}}
+  \lstinline|init(n)| & Initialize the tree with 0. \\
+  \lstinline|add(l, r, x)| & Add the elements in $[l, r]$ by $x$. \\
+  \lstinline|query(l, r)| & Return the sum of the elements in $[l, r]$.
+\end{tabular} \par
+\textbf{Requirement:} \\
+\Require{bit_purq} \par
+\textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for each update and query. \par
+\lstinputlisting[language=c++]{misc/bit_rurq.cpp}
+
 \section{Miscellaneous Data Structures}
 \subsection{Union-find set}
-Data structure for disjoint sets. \par
+Data structure for disjoint sets with path-compression optimization. \par
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{2cm} p{9.5cm}}
   \lstinline|init(n)| & Initialize the sets from 0 to $n$, each includes one element. \\

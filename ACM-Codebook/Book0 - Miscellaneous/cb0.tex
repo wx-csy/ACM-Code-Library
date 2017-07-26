@@ -53,4 +53,18 @@ Automaton for multi-pattern matching. \par
 \Require{trie} \par
 \textbf{Time complexity:} $O(l|\Sigma|)$ for insertion and construction, $O(l)$ for finding, provided the number of suffixes of a word is constant. \par
 \lstinputlisting[language=c++]{string/aho-corasick.cpp}
+
+\section{Mathematical Analysis}
+\subsection{Fast Fourier transform}
+\Warning The size of the sequence must be some power of 2. \\
+\Warning When performing convolution, the size of the sequence should be doubled. To compute $k$, one may call \lstinline|32-__builtin_clz(a+b-1)|, where $a$ and $b$ are the lengths of two sequences.  \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|FFT(k)| & Initialize the structure with maximum sequence length $2^k$. \\
+  \lstinline|fft(a)| & Perform Fourier transform on sequence $a$.  \\
+  \lstinline|ifft(a)| & Perform inverse Fourier transform on sequence $a$. \\
+  \lstinline|conv(a, b)| & Convolve sequence $a$ with $b$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n \log n)$ for \lstinline|fft|, \lstinline|ifft| and \lstinline|conv|. \par
+\lstinputlisting[language=c++]{ma/fft.cpp}
 \end{document}

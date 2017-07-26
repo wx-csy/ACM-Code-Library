@@ -12,8 +12,7 @@ struct Trie{
 
     Trie(){
         memset(tr[0], 0, sizeof(tr[0]));
-        tag[0] = 0;
-        n = 1;
+        tag[0] = 0; n = 1;
     }
 
     // tag should not be 0

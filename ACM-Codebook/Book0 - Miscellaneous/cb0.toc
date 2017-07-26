@@ -4,3 +4,5 @@
 \contentsline {subsection}{\numberline {2.1}Knuth-Morris-Pratt algorithm}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Trie}{5}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Aho-Corasick automaton}{6}{subsection.2.3}
+\contentsline {section}{\numberline {3}Mathematical Analysis}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Fast Fourier transform}{8}{subsection.3.1}
