@@ -5,8 +5,7 @@ LL d[MAXV][MAXV];
 
 void init(){
     Rep (i, V){
-        Rep (j, V)
-            d[i][j] = INF;
+        Rep (j, V) d[i][j] = INF;
         d[i][i] = 0;
     }
 }

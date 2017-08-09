@@ -13,7 +13,6 @@
 \subsection{Modulo operations}
 \subsubsection{Modular exponentiation (fast power-mod)} \label{powmod}
 Calculate $b^e \bmod m$. \par
-\Warning Cannot be performed on \lstinline|long long|, unless use \Require{mulmod}. \par
 \textbf{Time complexity:} $O(\log e)$ \par
 \lstinputlisting[language=c++]{number-theory/powmod.cpp}
 
@@ -21,11 +20,11 @@ Calculate $b^e \bmod m$. \par
 The result has the same sign as divisor. \par
 \lstinputlisting[language=c++]{number-theory/mathmod.cpp}
 
-\subsubsection{Modular multiplication on long long} \label{mulmod}
-Calculate $ab \bmod m$, where $a, b, m$ are \lstinline|long long| integers. \par
-\Warning $a, b, m$ must be non-negative. \par
-\textbf{Time complexity:} $O(\log b)$ \par
-\lstinputlisting[language=c++]{number-theory/mulmod.cpp}
+% \subsubsection{Modular multiplication on long long} \label{mulmod}
+% Calculate $ab \bmod m$, where $a, b, m$ are \lstinline|long long| integers. \par
+% \Warning $a, b, m$ must be non-negative. \par
+% \textbf{Time complexity:} $O(\log b)$ \par
+% \lstinputlisting[language=c++]{number-theory/mulmod.cpp}
 
 \subsection{Extended Euclidian algorithm} % Stanford'
 Solve $ax + by = g = \gcd(a,b)$ w.r.t. $x, y$. \par
@@ -43,7 +42,7 @@ An integer $a$ has modular multiplicative inverse w.r.t. the modulus $m$, iff $\
 $$ ax \equiv 1 \mod m \text{.}$$
 Call \lstinline|exgcd(a, m, g, x, y)|, if $g = 1$, $x + km$ is the modular multiplicative inverse of $a$ w.r.t. the modulus $m$. \par
 \lstinputlisting[language=c++]{number-theory/minv.cpp} \par
-Or, by Fermat's little theorem ($a^p \equiv a \mod p$), when $m$ is a prime, the multiplicative can also be written as 
+Or, by Fermat's little theorem ($a^{p-1} \equiv 1 \mod p$), when $m=p$ is a prime, the multiplicative inverse can also be written as
 $a^{-1} = \left(a^{p-2} \bmod p\right) \text{.}$
 
 \subsection{Primality test (Miller-Rabin)}
@@ -62,15 +61,35 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \lstinputlisting[language=c++]{number-theory/miller-rabin.cpp}
 
 \subsection{Sieve of Eratosthenes}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8cm}}
+  \lstinline|sieve()| & Generate the table. \\
+  \lstinline|p[i]| & True if $i$ is \textbf{not} a prime; otherwise false.
+\end{tabular} \par
+\textbf{Time complexity:} Approximately linear. \par
+\lstinputlisting[language=c++]{number-theory/sieve.cpp}
 
-\subsection{Chinese remainder theorem}
+\subsection{Number theoretic transform}
+\Warning The size of the sequence must be some power of 2. \\
+\Warning When performing convolution, the size of the sequence should be doubled. To compute $k$, one may call \lstinline|32-__builtin_clz(a+b-1)|, where $a$ and $b$ are the lengths of two sequences.  \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|NTT(k)| & Initialize the structure with maximum sequence length $2^k$. \\
+  \lstinline|ntt(a)| & Perform number theoretic transform on sequence $a$.  \\
+  \lstinline|intt(a)| & Perform inverse number theoretic transform on sequence $a$. \\
+  \lstinline|conv(a, b)| & Convolve sequence $a$ with $b$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n \log n)$. \par
+\lstinputlisting[language=c++]{number-theory/ntt.cpp}
+
+%\subsection{Chinese remainder theorem}
 
 
-\subsection{Quadratic residue}
-\subsubsection{Legendre symbol}
-For non-negative integer $a$ and \textbf{odd} prime $p$, the Legendre symbol is defined as
-$$ \left( \frac{a}{p} \right) = \begin{cases} 0 & \text{if } a \mid p  \\ 1 & \text{if } a \nmid p \text{ and } a \text{ is a quadratic residue modulo } p \\ p-1 & \text{if } a \nmid p \text{ and } a \text{ is a quadratic non-residue modulo } p \end{cases} $$
-Call \lstinline|powmod(a, (p-1)/2, p)| to calculate Legendre symbol.
+%\subsection{Quadratic residue}
+%\subsubsection{Legendre symbol}
+%For non-negative integer $a$ and \textbf{odd} prime $p$, the Legendre symbol is defined as
+%$$ \left( \frac{a}{p} \right) = \begin{cases} 0 & \text{if } p \mid a \\ 1 & \text{if } p \nmid a \text{ and } a \text{ is a quadratic residue modulo } p \\ p-1 & \text{if } p \nmid a \text{ and } a \text{ is a quadratic non-residue modulo } p \end{cases} $$
+%Call \lstinline|powmod(a, (p-1)/2, p)| to calculate Legendre symbol.
 \section{Linear Algebra}
 \subsection{Modular exponentiation of matrices}
 Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wise.\par
@@ -84,5 +103,12 @@ Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wis
 \lstinputlisting[language=c++]{linear-algebra/matrix_powmod.cpp}
 
 \section{Combinatorics}
+\subsection{M\"{o}bius inversion}
+M\"{o}bius function:
+$$ \mu(n) = \begin{cases} 1 & \text{if } n=1  \\ 0 & \text{if } {p_i}^{a_i} \mid n \text{ where } a_i > 0 \\ (-1)^r & \text{if } n \text{ is the product of } r \text{ distinct primes} \end{cases} $$
+If $S_f(n) = \sum_{d \mid n} f(d)$, then $f(n) = \sum_{d \mid n} \mu(d) S_f(n/d)$.
+
+\subsection{M\"{o}bius transformation}
+
 \subsection{P\'olya enumeration theorem}
 \end{document}

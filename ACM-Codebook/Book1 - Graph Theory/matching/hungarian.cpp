@@ -10,15 +10,13 @@ struct Hungarian{
     int nx, ny;
     vector<int> mx, my;
     vector<vector<int> > e;
-    basic_string<bool> mark;
+    vector<bool> mark;
 
     void init(int nx, int ny){
         this->nx = nx;
         this->ny = ny;
-        mx.resize(nx);
-        my.resize(ny);
-        e.clear();
-        e.resize(nx);
+        mx.resize(nx); my.resize(ny);
+        e.clear(); e.resize(nx);
         mark.resize(nx);
     }
 
@@ -29,10 +27,9 @@ struct Hungarian{
     bool augment(int i){
         if (!mark[i]) {
             mark[i] = true;
-            for (vector<int>::const_iterator j = e[i].begin(); j != e[i].end(); j++){
-                if (my[*j] == -1 || augment(my[*j])){
-                    mx[i] = *j;
-                    my[*j] = i;
+            for (int j : e[i]){
+                if (my[j] == -1 || augment(my[j])){
+                    mx[i] = j; my[j] = i;
                     return true;
                 }
             }
@@ -44,12 +41,23 @@ struct Hungarian{
         int ret = 0;
         fill(range(mx), -1);
         fill(range(my), -1);
-        for (int i=0; i<nx; i++){
+        rep (i, nx){
             fill(range(mark), false);
-            if (augment(i)){
-                ret++;
-            }
+            if (augment(i)) ret++;
         }
         return ret;
     }
-};
+} hun;
+
+int main(){
+    int n, m, e;
+    cin >> n >> m >> e;
+    hun.init(n+1, m+1);
+    int x, y;
+    rep (i, e){
+        cin >> x >> y;
+        if (y<=m) hun.add(x, y);
+    }
+    cout << hun.match();
+    return 0;
+}
