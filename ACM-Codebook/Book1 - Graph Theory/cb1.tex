@@ -4,6 +4,7 @@
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
@@ -57,6 +58,14 @@ Floyd-Warshall algorithm. \par
 \section{Spanning Tree}
 \subsection{Minimum spanning tree}
 \subsubsection{Kruskal's algorithm}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|n, m| & The number of vertices and edges, resp. \\
+  \lstinline|edges[]| & Edges of the graph, numbered from 0. \\
+  \lstinline|kruskal()| & Run Kruskal's algorihtm. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|E| \log |E|)$ \par
+\lstinputlisting[language=c++]{spanning-tree/kruskal.cpp}
 
 \subsubsection{Prim's algorithm}
 

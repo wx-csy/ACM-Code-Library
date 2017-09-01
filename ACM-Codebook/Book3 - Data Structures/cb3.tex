@@ -4,12 +4,13 @@
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
 \newevenpage
 % New codebook
-\section{Segment Tree}
+\section{Range Operation Structures}
 \subsection{Binary indexed tree}
 \subsubsection{Point update, range query} \label{bit_purq}
 \textbf{Usage:} \\[0.1cm]
@@ -55,4 +56,28 @@ Data structure for disjoint sets with path-compression optimization. \par
 \textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for find and union. \par
 \lstinputlisting[language=c++]{misc/ufs.cpp}
 
+\subsection{Sparse table, range extremum query (RMQ)}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|ext(x, y)| & Return the extremum of $x$ and $y$. \textbf{Modify this function before use!} \\
+  \lstinline|init(n)| & Calculate the sparse table for array $a$ from \lstinline|a[0]| to \lstinline|a[n-1]|. \\
+  \lstinline|rmq(l, r)| & Query range extremum from \lstinline|a[l]| to \lstinline|a[r]|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n \log n)$ for initialization; $O(1)$ for each query. \par
+\lstinputlisting[language=c++]{misc/rmq.cpp}
+
+\section{Tree}
+\subsection{Heavy-light decomposition}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|sz[x]| & Size of subtree rooted at $x$. \\
+  \lstinline|top[x]| & Top node of the chain that $x$ belongs to. \\ \lstinline|fa[x]| & Father of $x$ if exists; otherwise 0. \\
+  \lstinline|son[x]| & Child node of $x$ in its chain if exists; otherwise 0. \\
+  \lstinline|depth[x]| & Depth of $x$. The depth of root is 1. \\
+  \lstinline|id[x]| & Index of $x$ used in data structure. \\
+  \lstinline|decomp(r)| & Perform heavy-light decomposition on tree rooted at $r$. \\
+  \lstinline|query(u, v)| & Query the path between $u$ and $v$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n)$ for decomposition; $O(f(n)\log n)$ for each query, where $f(n)$ is the time-complexity of data structure. \par
+\lstinputlisting[language=c++]{tree/hldecmp.cpp}
 \end{document}

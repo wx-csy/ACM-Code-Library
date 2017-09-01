@@ -4,6 +4,7 @@
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
@@ -20,11 +21,11 @@ Calculate $b^e \bmod m$. \par
 The result has the same sign as divisor. \par
 \lstinputlisting[language=c++]{number-theory/mathmod.cpp}
 
-% \subsubsection{Modular multiplication on long long} \label{mulmod}
-% Calculate $ab \bmod m$, where $a, b, m$ are \lstinline|long long| integers. \par
-% \Warning $a, b, m$ must be non-negative. \par
-% \textbf{Time complexity:} $O(\log b)$ \par
-% \lstinputlisting[language=c++]{number-theory/mulmod.cpp}
+\subsubsection{Modular multiplication on long long} \label{mulmod}
+Calculate $ab \bmod m$, where $a, b, m$ are \lstinline|long long| integers. \par
+\Warning $a, b, m$ must be non-negative. \par
+\textbf{Time complexity:} $O(\log b)$ \par
+\lstinputlisting[language=c++]{number-theory/mulmod.cpp}
 
 \subsection{Extended Euclidian algorithm} % Stanford'
 Solve $ax + by = g = \gcd(a,b)$ w.r.t. $x, y$. \par
