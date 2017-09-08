@@ -53,7 +53,6 @@ Data structure for disjoint sets with path-compression optimization. \par
   \lstinline|find(x)| & Return the representative of the set containing $x$. \\
   \lstinline|unite(u, v)| & Unite the two sets containing $u$ and $v$. Return \lstinline|false| if $u$ and $v$ are already in the same set; otherwise \lstinline|true|. \\
 \end{tabular} \par
-\textbf{Time complexity:} $O(n)$ for initialization; $O(\log n)$ for find and union. \par
 \lstinputlisting[language=c++]{misc/ufs.cpp}
 
 \subsection{Sparse table, range extremum query (RMQ)}

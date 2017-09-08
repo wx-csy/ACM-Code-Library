@@ -69,6 +69,12 @@ Floyd-Warshall algorithm. \par
 
 \subsubsection{Prim's algorithm}
 
+\subsection{Minimum ratio spanning tree}
+Minimize $\frac{\sum_{e \in ST} cost[e]}{\sum_{e \in ST} dist[e]}$ where $ST$ is a spanning tree. \par
+\textbf{Usage:} \\[0.1cm]
+First, build the edges of the graph as the structure shows; then, call \lstinline|solve()| to get the answer. \par
+\lstinputlisting[language=c++]{spanning-tree/ratio.cpp}
+
 \section{Depth-first Search}
 \subsection{Strongly connected components, condensation (Tarjan)}
 Find strongly connected components and compute the component graph. \par
