@@ -67,13 +67,30 @@ Floyd-Warshall algorithm. \par
 \textbf{Time complexity:} $O(|E| \log |E|)$ \par
 \lstinputlisting[language=c++]{spanning-tree/kruskal.cpp}
 
-\subsubsection{Prim's algorithm}
+\subsubsection{Prim's algorithm, adjacency matrix representation}
+Calculate minimum spanning tree. The result is represented as a tree rootes at \lstinline|src|. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|adj[i][j]| & Adjacency matrix, indexed from 1. \\
+  \lstinline|prim(src)| & Run Prim's algorihtm from \lstinline|src|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|V|^2)$ \par
+\lstinputlisting[language=c++]{spanning-tree/prim.cpp}
 
 \subsection{Minimum ratio spanning tree}
 Minimize $\frac{\sum_{e \in ST} cost[e]}{\sum_{e \in ST} dist[e]}$ where $ST$ is a spanning tree. \par
 \textbf{Usage:} \\[0.1cm]
-First, build the edges of the graph as the structure shows; then, call \lstinline|solve()| to get the answer. \par
+First, build the edges of the graph as the structure shows; then, implement a usual MST algorithm; finally, call \lstinline|solve()| to get the answer. \par
 \lstinputlisting[language=c++]{spanning-tree/ratio.cpp}
+
+\subsection{Manhattan distance minimum spanning tree}
+\textbf{Usgae:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{9cm}}
+  \lstinline|add_point(x, y)| & Add point $(x, y)$. \\
+  \lstinline|Manhattan_MST()| & Calculate Manhattan distance minimum spanning tree.
+\end{tabular} \par
+\textbf{Time complexity:} $O(n \log n)$, but constant factor may be large. \par
+\lstinputlisting[language=c++]{spanning-tree/manhattan.cpp}
 
 \section{Depth-first Search}
 \subsection{Strongly connected components, condensation (Tarjan)}
@@ -87,6 +104,7 @@ Find strongly connected components and compute the component graph. \par
   \lstinline|find_scc()| & Find all SCCs. \\
   \lstinline|contract()| & Compute component graph. \\
 \end{tabular} \par
+\Warning The vertices should be discretized when necessary. \par
 \textbf{Time complexity:} $O(|V| + |E|)$ \par
 \lstinputlisting[language=c++]{dfs/scc.cpp}
 
