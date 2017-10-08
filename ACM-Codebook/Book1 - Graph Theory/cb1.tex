@@ -24,7 +24,7 @@ Dijkstra's algorithm with binary heap. \par
   \lstinline|d[x]| & distance to $x$ \\
   \lstinline|p[x]| & last edge to $x$ in SSSP  \\
 \end{tabular} \par
-\textbf{Time complexity:} $O(|E| \log |V|)$ \par
+\textbf{Time complexity:} $O(E \log V)$ \par
 \lstinputlisting[language=c++]{shortest-paths/dijkstra.cpp}
 
 \subsubsection{SPFA}
@@ -38,7 +38,7 @@ This code is used to replace \lstinline|void dijkstra(int src)|. \par
 \end{tabular} \par
 \textbf{Requirement:} \\
 \Require{dijkstra} \par
-\textbf{Time complexity:} $O(k|E|)$, generally $k<2$ \par
+\textbf{Time complexity:} $O(kE)$, for most graphs, $k<2$ \par
 \lstinputlisting[language=c++]{shortest-paths/spfa.cpp}
 
 \subsection{All-pairs shortest paths (Floyd-Warshall)}
@@ -52,7 +52,7 @@ Floyd-Warshall algorithm. \par
   \lstinline|floyd()| & Calculate APSP. \\
   \lstinline|d[i][j]| & distance from $i$ to $j$ \\
 \end{tabular} \par
-\textbf{Time complexity:} $O(|V|^3)$ \par
+\textbf{Time complexity:} $O(V^3)$ \par
 \lstinputlisting[language=c++]{shortest-paths/floyd.cpp}
 
 \section{Spanning Tree}
@@ -64,7 +64,7 @@ Floyd-Warshall algorithm. \par
   \lstinline|edges[]| & Edges of the graph, numbered from 0. \\
   \lstinline|kruskal()| & Run Kruskal's algorihtm. \\
 \end{tabular} \par
-\textbf{Time complexity:} $O(|E| \log |E|)$ \par
+\textbf{Time complexity:} $O(E \log E)$ \par
 \lstinputlisting[language=c++]{spanning-tree/kruskal.cpp}
 
 \subsubsection{Prim's algorithm, adjacency matrix representation}
@@ -74,7 +74,7 @@ Calculate minimum spanning tree. The result is represented as a tree rootes at \
   \lstinline|adj[i][j]| & Adjacency matrix, indexed from 1. \\
   \lstinline|prim(src)| & Run Prim's algorihtm from \lstinline|src|. \\
 \end{tabular} \par
-\textbf{Time complexity:} $O(|V|^2)$ \par
+\textbf{Time complexity:} $O(V^2)$ \par
 \lstinputlisting[language=c++]{spanning-tree/prim.cpp}
 
 \subsection{Minimum ratio spanning tree}
@@ -105,9 +105,29 @@ Find strongly connected components and compute the component graph. \par
   \lstinline|contract()| & Compute component graph. \\
 \end{tabular} \par
 \Warning The vertices should be discretized when necessary. \par
-\textbf{Time complexity:} $O(|V| + |E|)$ \par
+\textbf{Time complexity:} $O(V + E)$ \par
 \lstinputlisting[language=c++]{dfs/scc.cpp}
 
 \section{Flow Network}
+\subsection{Maximum flow, Dinic's algorithm}
+\Tick Can be performed on networks with parallel and antiparallel edges.\par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3.5cm} p{8cm}}
+  \lstinline|add_edge(u, v, c)| & Add an edge from $u$ to $v$ with capacity $c$. \\
+  \lstinline|max_flow(s, t)| & Compute maximum flow from $s$ to $t$. \\
+\end{tabular} \par
+\textbf{Time complexity:} For general graph, $O(V^2E)$; for network with unit capacities, \\ $O(\min\{V^{2/3}, E^{1/2}\}E)$; for bipartite network, $O(\sqrt{V}E)$. \par
+\lstinputlisting[language=c++]{flow/dinic.cpp}
+
+\subsection{MCMF, Ford-Fulkerson with SPFA}
+\Tick Can be performed on networks with parallel and antiparallel edges.\par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4.5cm} p{7cm}}
+  \lstinline|add_edge(u, v, c)| & Add an edge from $u$ to $v$ with capacity $c$. \\
+  \lstinline|min_cost(s, t, &cost)| & Compute MCMF from $s$ to $t$. Return the maximum flow, and set \lstinline|cost| as the minimum cost. \\
+  \lstinline|min_cost(s, t, f, &cost)| & Compute minimum cost flow from $s$ to $t$ with capacity $f$. Return whether such flow exists, and set \lstinline|cost| as the minimum cost, if exists. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|f|kE)$. \par
+\lstinputlisting[language=c++]{flow/mcmf.cpp}
 
 \end{document}
