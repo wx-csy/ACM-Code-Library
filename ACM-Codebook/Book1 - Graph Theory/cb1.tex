@@ -130,4 +130,15 @@ Find strongly connected components and compute the component graph. \par
 \textbf{Time complexity:} $O(|f|kE)$. \par
 \lstinputlisting[language=c++]{flow/mcmf.cpp}
 
+\section{Matching}
+\subsection{Maximum cardinality bipartite matching, Hungarian}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{8cm}}
+  \lstinline|init(nx, ny)| & Initialize the algorithm with two parts containing  \lstinline|nx|,  \lstinline|ny| vertices, respectively. The vertices are numbered from 0. \\
+  \lstinline|add(a, b)| & Add an edge from $a$ to $b$. \\
+  \lstinline|match()| & Compute and return maximum cardinality bipartite matching,. \\
+  \lstinline|mx[], my[]| & The index of the other vertex if matched; otherwise $-1$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(VE)$. \par
+\lstinputlisting[language=c++]{matching/hungarian.cpp}
 \end{document}

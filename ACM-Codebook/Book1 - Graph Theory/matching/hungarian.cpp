@@ -47,17 +47,4 @@ struct Hungarian{
         }
         return ret;
     }
-} hun;
-
-int main(){
-    int n, m, e;
-    cin >> n >> m >> e;
-    hun.init(n+1, m+1);
-    int x, y;
-    rep (i, e){
-        cin >> x >> y;
-        if (y<=m) hun.add(x, y);
-    }
-    cout << hun.match();
-    return 0;
-}
+};

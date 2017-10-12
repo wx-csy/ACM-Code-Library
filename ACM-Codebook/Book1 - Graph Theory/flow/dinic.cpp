@@ -1,9 +1,9 @@
 struct edge{
     int from, to;
-    int cap, flow;
+    LL cap, flow;
 };
 
-const int MAXN = 50;
+const int MAXN = 1005;
 struct Dinic {
     int n, m, s, t;
     vector<edge> edges;
@@ -12,7 +12,7 @@ struct Dinic {
     int d[MAXN];
     int cur[MAXN];
 
-    void add_edge(int from, int to, int cap) {
+    void add_edge(int from, int to, LL cap) {
         edges.push_back(edge{from, to, cap, 0});
         edges.push_back(edge{to, from, 0, 0});
         m = edges.size();
@@ -40,9 +40,9 @@ struct Dinic {
         return vis[t];
     }
 
-    int dfs(int x, int a) {
+    LL dfs(int x, LL a) {
         if(x == t || a == 0) return a;
-        int flow = 0, f;
+        LL flow = 0, f;
         for(int& i = cur[x]; i < G[x].size(); i++) {
             edge& e = edges[G[x][i]];
             if(d[x] + 1 == d[e.to] && (f = dfs(e.to, min(a, e.cap-e.flow))) > 0) {
@@ -56,9 +56,9 @@ struct Dinic {
         return flow;
     }
 
-    int max_flow(int s, int t) {
+    LL max_flow(int s, int t) {
         this->s = s; this->t = t;
-        int flow = 0;
+        LL flow = 0;
         while(bfs()) {
             memset(cur, 0, sizeof(cur));
             flow += dfs(s, INT_MAX);
