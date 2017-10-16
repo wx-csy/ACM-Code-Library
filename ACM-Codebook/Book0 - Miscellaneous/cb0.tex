@@ -55,7 +55,17 @@ Automaton for multi-pattern matching. \par
 \textbf{Time complexity:} $O(l|\Sigma|)$ for insertion and construction, $O(l)$ for finding, provided the number of suffixes of a word is constant. \par
 \lstinputlisting[language=c++]{string/aho-corasick.cpp}
 
-\section{Mathematical Analysis}
+\section{Game Theory}
+以下游戏中，不能动的算输。
+\subsection{Nim game}
+\subsubsection{Bash game}
+有~$n$~个石子，每人最多拿~$m$~个，最少拿~1~个。$n \bmod (m+1) \neq 0$~时先手必胜。
+\subsubsection{Fibonacci nim}
+有~$n$~个石子，第一轮可以拿不超过~$n$~个石子。此后，每次拿的石子数不超过前一次的~2~倍。当~$n$~是斐波那契数时先手必胜。
+\subsubsection{Wythoff's game}
+有~2~堆石子，分别有~$a$,$b$~个（$a \leq b$)，每人可以从一堆中拿任意多个，或从两堆中拿相同多个。当~$a = \lfloor (b-a)\frac{\sqrt{5}+1}{2} \rfloor$~ 时先手必败。
+
+\section{Others}
 \subsection{Fast Fourier transform}
 \Warning The size of the sequence must be some power of 2. \\
 \Warning When performing convolution, the size of the sequence should be doubled. To compute $k$, one may call \lstinline|32-__builtin_clz(a+b-1)|, where $a$ and $b$ are the lengths of two sequences.  \par
@@ -67,16 +77,16 @@ Automaton for multi-pattern matching. \par
   \lstinline|conv(a, b)| & Convolve sequence $a$ with $b$. \\
 \end{tabular} \par
 \textbf{Time complexity:} $O(n \log n)$ for \lstinline|fft|, \lstinline|ifft| and \lstinline|conv|. \par
-\lstinputlisting[language=c++]{ma/fft.cpp}
+\lstinputlisting[language=c++]{others/fft.cpp}
 
-\section{Game Theory}
-以下游戏中，不能动的算输。
-\subsection{Nim game}
-\subsubsection{Bash game}
-有~$n$~个石子，每人最多拿~$m$~个，最少拿~1~个。$n \bmod (m+1) \neq 0$~时先手必胜。
-\subsubsection{Fibonacci nim}
-有~$n$~个石子，第一轮可以拿不超过~$n$~个石子。此后，每次拿的石子数不超过前一次的~2~倍。当~$n$~是斐波那契数时先手必胜。
-\subsubsection{Wythoff's game}
-有~2~堆石子，分别有~$a$,$b$~个（$a \leq b$)，每人可以从一堆中拿任意多个，或从两堆中拿相同多个。当~$a = \lfloor (b-a)\frac{\sqrt{5}+1}{2} \rfloor$~ 时先手必败。
-
+\subsection{2-SAT}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|init(n)| & Initialize the structure with at most $n$ Boolean variables. \\
+  \lstinline|add_clause(x, xval, y, yval)| & Add clause: $x = xval$ or $y = yval$.  \\
+  \lstinline|solve()| & Solve the 2-SAT problem. Return false if no solution. \\
+  \lstinline|value(i)| & Return the value of $i$-th variable in some solution, if exists. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(m+n)$. \par
+\lstinputlisting[language=c++]{others/two-sat.cpp}
 \end{document}
