@@ -21,9 +21,9 @@ bool ptOnSeg(pt& p, seg& s){
     return (v1, v2) <= 0 && v1 * v2 == 0;
 }
 
-// 0 不在线段上
-// 1 在线段内部
-// 2 在端点上
+// 0 not on segment
+// 1 on segment except vertices
+// 2 on vertices
 int ptOnSeg2(pt& p, seg& s){
     vec v1 = s.first - p, v2 = s.second - p;
     T ip = (v1, v2);
@@ -31,7 +31,7 @@ int ptOnSeg2(pt& p, seg& s){
     return (v1, v2) ? 1 : 2;
 }
 
-// 快速排斥实验，不相交为 true
+// if two orthogonal rectangles do not touch, return true
 inline bool nIntRectRect(seg a, seg b){
     return min(a.first.x, a.second.x) > max(b.first.x, b.second.x) ||
            min(a.first.y, a.second.y) > max(b.first.y, b.second.y) ||
@@ -39,9 +39,9 @@ inline bool nIntRectRect(seg a, seg b){
            min(b.first.y, b.second.y) > max(a.first.y, a.second.y);
 }
 
-// >0 三向量顺序
-// <0 三向量逆序
-// =0 非规范状态
+// >0 in order
+// <0 out of order
+// =0 not standard
 inline double rotOrder(vec a, vec b, vec c){return double(a*b)*(b*c);}
 
 inline bool intersect(seg a, seg b){
@@ -50,11 +50,11 @@ inline bool intersect(seg a, seg b){
            rotOrder(a.first-b.first, b.second-b.first, a.second-b.first) >= 0;
 }
 
-// 0 不相交
-// 1 规范相交
-// 2 顶点-边相交
-// 3 顶点-顶点相交
-// 4 共线且有交点
+// 0 not insersect
+// 1 standard intersection
+// 2 vertex-line intersection
+// 3 vertex-vertex intersection
+// 4 collinear and have common point(s)
 int intersect2(seg& a, seg& b){
     if (nIntRectRect(a, b)) return 0;
     vec va = a.second - a.first, vb = b.second - b.first;
@@ -88,9 +88,6 @@ int ptOnPoly(pt p, pt* poly, int n){
     return wn ? 1 : -1;
 }
 
-int n;
-seg segs[105];
-
 istream& operator >> (istream& lhs, pt& rhs){
     lhs >> rhs.x >> rhs.y;
     return lhs;
@@ -99,9 +96,4 @@ istream& operator >> (istream& lhs, pt& rhs){
 istream& operator >> (istream& lhs, seg& rhs){
     lhs >> rhs.first >> rhs.second;
     return lhs;
-}
-
-int main(){
-
-    return 0;
 }

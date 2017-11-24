@@ -8,8 +8,9 @@
 \contentsline {subsection}{\numberline {1.3}Primality test (Miller-Rabin)}{6}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Sieve of Eratosthenes}{6}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Number theoretic transform}{7}{subsection.1.5}
-\contentsline {section}{\numberline {2}Linear Algebra}{8}{section.2}
-\contentsline {subsection}{\numberline {2.1}Modular exponentiation of matrices}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {1.6}Pell's equation}{8}{subsection.1.6}
+\contentsline {section}{\numberline {2}Linear Algebra}{9}{section.2}
+\contentsline {subsection}{\numberline {2.1}Modular exponentiation of matrices}{9}{subsection.2.1}
 \contentsline {section}{\numberline {3}Combinatorics}{10}{section.3}
 \contentsline {subsection}{\numberline {3.1}M\"{o}bius inversion}{10}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}M\"{o}bius transformation}{10}{subsection.3.2}

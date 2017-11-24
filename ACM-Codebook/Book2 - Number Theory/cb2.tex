@@ -83,6 +83,16 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \textbf{Time complexity:} $O(n \log n)$. \par
 \lstinputlisting[language=c++]{number-theory/ntt.cpp}
 
+\subsection{Pell's equation}
+$x^2 - ny^2 = 1$, where $n$ is a positive nonsquare integer. \par
+Let $(x_0, y_0)$ be the smallest positive solution of the equation, then the $k$-th solution is:
+$$\begin{pmatrix}x_k \\ y_k\end{pmatrix} =
+\begin{pmatrix}
+  x_1 & ny_1 \\
+  y_1 & x_1
+\end{pmatrix} ^k
+\begin{pmatrix}x_0 \\ y_0\end{pmatrix}$$
+
 %\subsection{Chinese remainder theorem}
 
 
