@@ -95,6 +95,10 @@ This Technique can also be used to compute multiplicative functions. For example
 \textbf{Time complexity:} $O(n \log n)$. \par
 \lstinputlisting[language=c++]{number-theory/ntt.cpp}
 
+\subsection{Fast Walsh-Hadamard transform}
+This is to compute $C_i = \sum_{j \oplus k} A_j \cdot B_k$, where $\oplus$ is a binary bitwise operation.
+\lstinputlisting[language=c++]{number-theory/fwt.cpp}
+
 \subsection{Pell's equation}
 $x^2 - ny^2 = 1$, where $n$ is a positive nonsquare integer. \par
 Let $(x_0, y_0)$ be the smallest positive solution of the equation, then the $k$-th solution is:
