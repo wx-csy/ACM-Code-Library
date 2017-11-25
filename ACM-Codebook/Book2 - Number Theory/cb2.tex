@@ -70,6 +70,18 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \textbf{Time complexity:} Approximately linear. \par
 \lstinputlisting[language=c++]{number-theory/sieve.cpp}
 
+\subsection{Sieve of Euler}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8cm}}
+  \lstinline|sieve()| & Generate the table. \\
+  \lstinline|p[i]| & True if $i$ is \textbf{not} a prime; otherwise false. \\
+  \lstinline|prime[i]| & The $i$th prime number.
+\end{tabular} \par
+\textbf{Time complexity:} Linear. \par
+\lstinputlisting[language=c++]{number-theory/euler_sieve.cpp}
+This Technique can also be used to compute multiplicative functions. For example, the following program computes the Euler's totient function.
+\lstinputlisting[language=c++]{number-theory/euler_sieve_totient.cpp}
+
 \subsection{Number theoretic transform}
 \Warning The size of the sequence must be some power of 2. \\
 \Warning When performing convolution, the size of the sequence should be doubled. To compute $k$, one may call \lstinline|32-__builtin_clz(a+b-1)|, where $a$ and $b$ are the lengths of two sequences.  \par
