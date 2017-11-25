@@ -79,7 +79,7 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \end{tabular} \par
 \textbf{Time complexity:} Linear. \par
 \lstinputlisting[language=c++]{number-theory/euler_sieve.cpp}
-This Technique can also be used to compute multiplicative functions. For example, the following program computes the Euler's totient function.
+This technique can also be used to compute multiplicative functions. For example, the following program computes the Euler's totient function.
 \lstinputlisting[language=c++]{number-theory/euler_sieve_totient.cpp}
 
 \subsection{Number theoretic transform}
@@ -124,7 +124,7 @@ Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wis
 \begin{tabular}{p{3cm} p{8.5cm}}
   \lstinline|n| & Order of matrices. \\
   \lstinline|modular| & The divisor in modulo operations. \\
-  \lstinline|m_powmod(b, e)| & Calculate $b^e \bmod modular$. The result is stored in \lstinline|r|. \\
+  \lstinline|m_powmod(b, e)| & Calculate $b^e \bmod modular$. The result is stored in \lstinline|r|.
 \end{tabular} \par
 \textbf{Time complexity:} $O(n^3 \log e)$ \par
 \lstinputlisting[language=c++]{linear-algebra/matrix_powmod.cpp}
@@ -135,7 +135,22 @@ M\"{o}bius function:
 $$ \mu(n) = \begin{cases} 1 & \text{if } n=1  \\ 0 & \text{if } {p_i}^{a_i} \mid n \text{ where } a_i > 0 \\ (-1)^r & \text{if } n \text{ is the product of } r \text{ distinct primes} \end{cases} $$
 If $S_f(n) = \sum_{d \mid n} f(d)$, then $f(n) = \sum_{d \mid n} \mu(d) S_f(n/d)$.
 
-\subsection{M\"{o}bius transformation}
+\subsection{Permutations}
+This provides operations of permutations of $0$ to $n-1$. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8.5cm}}
+  \lstinline|a*b| & Compute the composition of permutations $a$ and $b$. \\
+  \lstinline|~a| & Compute the inverse permutation of $a$. \\
+  \lstinline|permutation(a)| & Factorize the permutation to disjoint cycles. 
+\end{tabular} \par
+\textbf{Time complexity:} $O(n)$ \par
+\lstinputlisting[language=c++]{combine/permutation.cpp}
 
 \subsection{P\'olya enumeration theorem}
+The Burnside's lemma says that
+$$ |X / G| = \frac{1}{|G|} \sum_{g \in G} |X^g| $$
+where $G$ is a group acting on $X$, $X^g$ is the set of elements in $X$ that are fixed by $g$, i.e. $X^g = \{x \in X : gx = x\}$. \par
+The unweighted version of P\'olya enumeration theorem says that
+$$ |Y^X / G| = \frac{1}{|G|} \sum_{g \in G} m^{c_g} $$
+where $m = |X|$ is the number of colors, $c(g)$ is the number of the cycles of permutation $g$.
 \end{document}
