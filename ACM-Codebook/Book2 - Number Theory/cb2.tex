@@ -61,7 +61,8 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \textbf{Time complexity:} $O(\log n)$ \par
 \lstinputlisting[language=c++]{number-theory/miller-rabin.cpp}
 
-\subsection{Sieve of Eratosthenes}
+\subsection{Sieve}
+\subsubsection{of Eratosthenes}
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{3cm} p{8cm}}
   \lstinline|sieve()| & Generate the table. \\
@@ -70,7 +71,7 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \textbf{Time complexity:} Approximately linear. \par
 \lstinputlisting[language=c++]{number-theory/sieve.cpp}
 
-\subsection{Sieve of Euler}
+\subsubsection{of Euler}
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{3cm} p{8cm}}
   \lstinline|sieve()| & Generate the table. \\
@@ -81,6 +82,11 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \lstinputlisting[language=c++]{number-theory/euler_sieve.cpp}
 This technique can also be used to compute multiplicative functions. For example, the following program computes the Euler's totient function.
 \lstinputlisting[language=c++]{number-theory/euler_sieve_totient.cpp}
+
+\subsection{Integer factorization (Pollard's rho algorithm)}
+Find a nontrivial factor of a composite integer. One can recursively call this procedure to complete the factorization, by divide and conquer. \par
+\textbf{Time complexity:} Believed to be $O(n^{1/4})$ in expectation. \par
+\lstinputlisting[language=c++]{number-theory/pollard-rho.cpp}
 
 \subsection{Number theoretic transform}
 \Warning The size of the sequence must be some power of 2. \\
@@ -141,7 +147,7 @@ This provides operations of permutations of $0$ to $n-1$. \par
 \begin{tabular}{p{3cm} p{8.5cm}}
   \lstinline|a*b| & Compute the composition of permutations $a$ and $b$. \\
   \lstinline|~a| & Compute the inverse permutation of $a$. \\
-  \lstinline|permutation(a)| & Factorize the permutation to disjoint cycles. 
+  \lstinline|permutation(a)| & Factorize the permutation to disjoint cycles.
 \end{tabular} \par
 \textbf{Time complexity:} $O(n)$ \par
 \lstinputlisting[language=c++]{combine/permutation.cpp}
@@ -152,5 +158,5 @@ $$ |X / G| = \frac{1}{|G|} \sum_{g \in G} |X^g| $$
 where $G$ is a group acting on $X$, $X^g$ is the set of elements in $X$ that are fixed by $g$, i.e. $X^g = \{x \in X : gx = x\}$. \par
 The unweighted version of P\'olya enumeration theorem says that
 $$ |Y^X / G| = \frac{1}{|G|} \sum_{g \in G} m^{c_g} $$
-where $m = |X|$ is the number of colors, $c(g)$ is the number of the cycles of permutation $g$.
+where $m = |X|$ is the number of colors, $c_g$ is the number of the cycles of permutation $g$.
 \end{document}
