@@ -44,7 +44,9 @@ $$ ax \equiv 1 \mod m \text{.}$$
 Call \lstinline|exgcd(a, m, g, x, y)|, if $g = 1$, $x + km$ is the modular multiplicative inverse of $a$ w.r.t. the modulus $m$. \par
 \lstinputlisting[language=c++]{number-theory/minv.cpp} \par
 Or, by Fermat's little theorem ($a^{p-1} \equiv 1 \mod p$), when $m=p$ is a prime, the multiplicative inverse can also be written as
-$a^{-1} = \left(a^{p-2} \bmod p\right) \text{.}$
+$a^{-1} = \left(a^{p-2} \bmod p\right) \text{.}$ \par
+Also, the inverses of first $n$ numbers can be precalculated in $O(n)$ time.
+\lstinputlisting[language=c++]{number-theory/linear-inv.cpp}
 
 \subsection{Primality test (Miller-Rabin)}
 Test whether $n$ is a prime. \par
@@ -102,7 +104,8 @@ Find a nontrivial factor of a composite integer. One can recursively call this p
 \lstinputlisting[language=c++]{number-theory/ntt.cpp}
 
 \subsection{Fast Walsh-Hadamard transform}
-This is to compute $C_i = \sum_{j \oplus k} A_j \cdot B_k$, where $\oplus$ is a binary bitwise operation.
+This is to compute $$C[i] = \sum_{i = j \oplus k} A[j] \cdot B[k],$$ where $\oplus$ is a binary bitwise operation. \par
+\textbf{Time complexity:} $O(n \log n)$. \par
 \lstinputlisting[language=c++]{number-theory/fwt.cpp}
 
 \subsection{Pell's equation}
