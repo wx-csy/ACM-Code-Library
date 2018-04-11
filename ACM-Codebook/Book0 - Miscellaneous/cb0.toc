@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Trie}{5}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Aho-Corasick automaton}{6}{subsection.2.3}
 \contentsline {section}{\numberline {3}Game Theory}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Nim game}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Nim games}{8}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Bash game}{8}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Fibonacci nim}{8}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Wythoff's game}{8}{subsubsection.3.1.3}

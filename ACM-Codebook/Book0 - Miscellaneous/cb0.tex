@@ -56,14 +56,22 @@ Automaton for multi-pattern matching. \par
 \lstinputlisting[language=c++]{string/aho-corasick.cpp}
 
 \section{Game Theory}
+\subsection{Nim games}
 以下游戏中，不能动的算输。
-\subsection{Nim game}
 \subsubsection{Bash game}
 有~$n$~个石子，每人最多拿~$m$~个，最少拿~1~个。$n \bmod (m+1) \neq 0$~时先手必胜。
 \subsubsection{Fibonacci nim}
 有~$n$~个石子，第一轮可以拿不超过~$n$~个石子。此后，每次拿的石子数不超过前一次的~2~倍。当~$n$~是斐波那契数时先手必胜。
 \subsubsection{Wythoff's game}
 有~2~堆石子，分别有~$a$,$b$~个（$a \leq b$)，每人可以从一堆中拿任意多个，或从两堆中拿相同多个。当~$a = \lfloor (b-a)\frac{\sqrt{5}+1}{2} \rfloor$~ 时先手必败。
+
+%\subsection{Impartial games and surreal number}
+%\begin{align}
+%  0 &:= \{|\}, \{n|\} = n+1, \{|n\} = n-1, \{x|y\} = 0 (x < 0, y > 0)\\
+%  \{L | R\} &:= \begin{cases} (L, R)\text{内最接近 0 的整数，如果有} \\ \text{否则，取} (L, R) \text{中形如} p/2^q \text{且} q \text{最小的分数}  \end{cases} (L < R) \\
+%  * := \{0|0\} 
+%\end{align}
+
 
 \section{Others}
 \subsection{Fast Fourier transform}

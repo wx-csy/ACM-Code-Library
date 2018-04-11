@@ -8,3 +8,4 @@
 \contentsline {subsection}{\numberline {2.2}Sparse table, range extremum query (RMQ)}{7}{subsection.2.2}
 \contentsline {section}{\numberline {3}Tree}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Heavy-light decomposition}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Order Statistics and Splay}{9}{subsection.3.2}

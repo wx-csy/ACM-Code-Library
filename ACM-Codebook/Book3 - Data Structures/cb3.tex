@@ -79,4 +79,12 @@ Data structure for disjoint sets with path-compression optimization. \par
 \end{tabular} \par
 \textbf{Time complexity:} $O(n)$ for decomposition; $O(f(n)\log n)$ for each query, where $f(n)$ is the time-complexity of data structure. \par
 \lstinputlisting[language=c++]{tree/hldecmp.cpp}
+
+\subsection{Order Statistics and Splay}
+\Warning Like \lstinline|std::set|, this structure does not support multiple equivalent elements. \par
+\textbf{Usage:} \\[0.1cm]
+See comments in code.
+
+\lstinputlisting[language=c++]{tree/ordertree.cpp}
+
 \end{document}

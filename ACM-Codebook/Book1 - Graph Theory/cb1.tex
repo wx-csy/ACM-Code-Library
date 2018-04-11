@@ -107,6 +107,21 @@ Find strongly connected components and compute the component graph. \par
 \textbf{Time complexity:} $O(V + E)$ \par
 \lstinputlisting[language=c++]{dfs/scc.cpp}
 
+\subsection{Vertex biconnected components (Tarjan)}
+Find all vertex biconnected components (blocks). \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|add_edge(u, v)| & Add edge $(u, v)$ to the graph. \textbf{Vertices are numbered from 0.}\\
+  \lstinline|find_bcc(n)| & Find all BCCs in the graph containing $n$ vertices $[0, n)$.  \\
+  \lstinline|bcc_cnt| & number of BCCs \\
+  \lstinline|bccno[]| & the id of BCC a vertex belongs to.\textbf{The id is numbering from 0. If the vertex is a cut vertex, the value is undefined.} \\
+  \lstinline|iscut[]| & whether a vertex is a cut vertex \\
+  \lstinline|bcc[]| & the vertex set of a BCC \\
+  \lstinline|bcce[]| & the edge set of a BCC \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(V + E)$ \par
+\lstinputlisting[language=c++]{dfs/bcc.cpp}
+
 \section{Flow Network}
 \subsection{Maximum flow, Dinic's algorithm}
 \Tick Can be performed on networks with parallel and antiparallel edges.\par

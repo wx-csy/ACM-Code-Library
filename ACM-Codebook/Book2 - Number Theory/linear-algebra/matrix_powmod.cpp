@@ -22,7 +22,7 @@ struct matrix{
 
 matrix r;
 void m_powmod(matrix& b, LL e){
-    memset(r.m, sizeof(r.m), 0);
+    memset(r.m, 0, sizeof(r.m));
     Rep(i, n)
         r.m[i][i] = 1;
     while (e){
