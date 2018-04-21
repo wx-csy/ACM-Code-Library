@@ -138,6 +138,15 @@ Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wis
 \textbf{Time complexity:} $O(n^3 \log e)$ \par
 \lstinputlisting[language=c++]{linear-algebra/matrix_powmod.cpp}
 
+\subsection{Linear basis}
+Compute the basis over $\mathbb{F}_2$ field. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|insert(v)| & Insert the vector. Return whether the vector is independent of the existing vectors. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(d)$ per operation. \par
+\lstinputlisting[language=c++]{linear-algebra/linearbasis.cpp}
+
 \section{Combinatorics}
 \subsection{M\"{o}bius inversion}
 M\"{o}bius function:

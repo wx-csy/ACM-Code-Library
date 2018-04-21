@@ -11,11 +11,12 @@
 \contentsline {subsubsection}{\numberline {1.4.2}of Euler}{7}{subsubsection.1.4.2}
 \contentsline {subsection}{\numberline {1.5}Integer factorization (Pollard's rho algorithm)}{8}{subsection.1.5}
 \contentsline {subsection}{\numberline {1.6}Number theoretic transform}{9}{subsection.1.6}
-\contentsline {subsection}{\numberline {1.7}Fast Walsh-Hadamard transform}{10}{subsection.1.7}
-\contentsline {subsection}{\numberline {1.8}Pell's equation}{11}{subsection.1.8}
-\contentsline {section}{\numberline {2}Linear Algebra}{12}{section.2}
-\contentsline {subsection}{\numberline {2.1}Modular exponentiation of matrices}{12}{subsection.2.1}
-\contentsline {section}{\numberline {3}Combinatorics}{13}{section.3}
-\contentsline {subsection}{\numberline {3.1}M\"{o}bius inversion}{13}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Permutations}{13}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}P\'olya enumeration theorem}{14}{subsection.3.3}
+\contentsline {subsection}{\numberline {1.7}Fast Walsh-Hadamard transform}{11}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.8}Pell's equation}{12}{subsection.1.8}
+\contentsline {section}{\numberline {2}Linear Algebra}{13}{section.2}
+\contentsline {subsection}{\numberline {2.1}Modular exponentiation of matrices}{13}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Linear basis}{14}{subsection.2.2}
+\contentsline {section}{\numberline {3}Combinatorics}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}M\"{o}bius inversion}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Permutations}{15}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}P\'olya enumeration theorem}{16}{subsection.3.3}

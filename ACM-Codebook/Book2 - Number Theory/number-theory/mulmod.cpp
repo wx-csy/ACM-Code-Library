@@ -11,3 +11,8 @@ LL mulmod(LL a, LL b, LL m){
     }
     return r;
 }
+
+LL mulmod(LL a, LL b) {
+  LL tmp = (a * b - (LL)((long double)a/p*b + 1e-8)*p);
+  return tmp < 0 ? tmp + p : tmp;
+}
