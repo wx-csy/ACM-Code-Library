@@ -7,7 +7,7 @@ void dfs1(int x, int dep, int par){
     sz[x] = 1;
     fa[x] = par;
     int maxn = 0, s = 0;
-    for (int& c: adj[x]){
+    for (int c: adj[x]){
         if (c == par) continue;
         dfs1(c, dep + 1, x);
         sz[x] += sz[c];
@@ -24,7 +24,7 @@ void dfs2(int x, int t){
     top[x] = t;
     id[x] = ++cid;
     if (son[x]) dfs2(son[x], t);
-    for (int& c: adj[x]){
+    for (int c: adj[x]){
         if (c == fa[x]) continue;
         if (c == son[x]) continue;
         else dfs2(c, c);
@@ -38,17 +38,10 @@ void decomp(int root){
 
 void query(int u, int v){
     while (top[u] != top[v]){
-        if (depth[top[u]] > depth[top[v]]){
-            // id[top[u]] to id[u]
-            u = fa[top[u]];
-        } else {
-            // id[top[v]] to id[v]
-            v = fa[top[v]];
-        }
+        if (depth[top[u]] < depth[top[v]]) swap(u, v);
+        // id[top[u]] to id[u]
+        u = fa[top[u]];
     }
-    if (depth[u] > depth[v]){
-        // id[v] to id[u]
-    } else {
-        // id[u] to id[v]
-    }
+    if (depth[u] > depth[v]) swap(u, v);
+    // id[u] to id[v]
 }
