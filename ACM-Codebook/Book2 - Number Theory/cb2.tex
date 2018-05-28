@@ -171,4 +171,49 @@ where $G$ is a group acting on $X$, $X^g$ is the set of elements in $X$ that are
 The unweighted version of P\'olya enumeration theorem says that
 $$ |Y^X / G| = \frac{1}{|G|} \sum_{g \in G} m^{c_g} $$
 where $m = |X|$ is the number of colors, $c_g$ is the number of the cycles of permutation $g$.
+
+\newpage
+\section{Appendix}
+\subsection{Prime table}
+\subsubsection{First primes}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  $p$ & $g(p)$ & $p$ & $g(p)$ & $p$ & $g(p)$ & $p$ & $g(p)$ & $p$ & $g(p)$ \\ \hline
+  \input{./primes/prf.txt} \hline
+  \end{tabular}
+\end{table}
+
+\subsubsection{Arbitrary length primes}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  $\lg p$ & $p$ & $g(p)$ & $p$ & $g(p)$ \\ \hline
+  \input{./primes/princ.txt} \hline
+  \end{tabular}
+\end{table}
+\newpage
+
+\subsubsection{$\sim 1 \times 10^9$}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  $p$ & $g(p)$ & $p$ & $g(p)$ & $p$ & $g(p)$ \\ \hline
+  \input{./primes/pr1e9.txt} \hline
+  \end{tabular}
+\end{table}
+
+\subsubsection{$\sim 1 \times 10^{18}$}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  $p$ & $g(p)$ & $p$ & $g(p)$ \\ \hline
+  \input{./primes/pr1e18.txt} \hline
+  \end{tabular}
+\end{table}
+
 \end{document}
