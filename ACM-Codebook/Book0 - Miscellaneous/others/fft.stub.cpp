@@ -1,10 +1,16 @@
-const int NMAX = 1<<20;
+#include <bits/stdc++.h>
+using namespace std;
+
+#define rep(i, n) for (int i=0; i<(n); i++)
+#define Rep(i, n) for (int i=1; i<=(n); i++)
+
+const int NMAX = 1<<21;
 
 typedef complex<double> cplx;
 
 inline cplx operator * (cplx a, cplx b) {
-  double ra = a.real(), rb = b.real(),
-         ia = a.imag(), ib = b.imag();
+  double ra = real(a), rb = real(b),
+         ia = imag(a), ib = imag(b);
   return cplx(ra*ia-rb*ib, ra*ib+rb*ia);
 }
 
@@ -48,13 +54,31 @@ struct FFT{
     }
 
     void convr(cplx* a, cplx* b) {
-      rep (i, N) b[i].imag(a[i]);
+      rep (i, N) b[i] += cplx(0, 1) * a[i];
       fft(b);
       rep (i, N) {
         cplx lv = b[i], rv = conj(b[N-1-i]);
-        a[i] = (lv * lv + rv * rv) * cplx(0, -0.25);
+        a[i] = (lv * lv - rv * rv) * cplx(0, -0.25);
       }
       ifft(a);
     } 
 };
+
+
+cplx x[1<<21], y[1<<21];
+int n, m;
+
+int main(){
+  
+    int a;
+    scanf("%d%d", &n, &m);
+    n++; m++;
+    FFT fft(32 - __builtin_clz(n + m -1));
+//    rep (i, n) scanf("%d", &a), x[i] = a;
+//    rep (i, m) scanf("%d", &a), y[i] = a;
+//    fft.conv(x, y);
+//    rep (i, n+m-1) printf("%d ", (int)(real(x[i])+0.5));
+    
+    return 0;
+}
 

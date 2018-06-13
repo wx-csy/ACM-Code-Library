@@ -92,7 +92,7 @@ First, build the edges of the graph as the structure shows; then, implement a us
 \textbf{Time complexity:} $O(n \log n)$, but constant factor may be large. \par
 \lstinputlisting[language=c++]{spanning-tree/manhattan.cpp}
 
-\section{Depth-first Search}
+\section{Depth-First Search}
 \subsection{Strongly connected components, condensation (Tarjan)}
 Find strongly connected components and compute the component graph. \par
 \Warning The component graph may contain \textbf{multiple edges}. \par
@@ -122,8 +122,8 @@ Find all vertex biconnected components (blocks). \par
 \textbf{Time complexity:} $O(V + E)$ \par
 \lstinputlisting[language=c++]{dfs/bcc.cpp}
 
-\section{Flow Network}
-\subsection{Maximum flow, Dinic's algorithm}
+\section{Flow, Cut and Matching}
+\subsection{Maximum flow (Dini\'c)}
 \Tick Can be performed on networks with parallel and antiparallel edges.\par
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{3.5cm} p{8cm}}
@@ -144,8 +144,17 @@ Find all vertex biconnected components (blocks). \par
 \textbf{Time complexity:} $O(|f|kE)$. \par
 \lstinputlisting[language=c++]{flow/mcmf.cpp}
 
-\section{Matching}
-\subsection{Maximum cardinality bipartite matching, Hungarian}
+\subsection{Global minimum cut (Stoer-Wanger)}
+Compute the global minimum cut of an undirected graph. \par
+\Warning The original matrix will be destroyed after calling this function.\par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{1.5cm} p{10cm}}
+  \lstinline|stoer(w)| & Compute the global minimum cut of the graph specified by the symmetric adjacency matrix \lstinline|w| (0-based). Return the capacity of the cut and the indices of one part of the cut. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(|V|^3)$. \par
+\lstinputlisting[language=c++]{flow/stoer.cpp}
+
+\subsection{Maximum cardinality bipartite matching (Hungarian)}
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{2.5cm} p{8cm}}
   \lstinline|init(nx, ny)| & Initialize the algorithm with two parts containing  \lstinline|nx|,  \lstinline|ny| vertices, respectively. The vertices are numbered from 0. \\
@@ -154,5 +163,5 @@ Find all vertex biconnected components (blocks). \par
   \lstinline|mx[], my[]| & The index of the other vertex if matched; otherwise $-1$. \\
 \end{tabular} \par
 \textbf{Time complexity:} $O(VE)$. \par
-\lstinputlisting[language=c++]{matching/hungarian.cpp}
+\lstinputlisting[language=c++]{flow/hungarian.cpp}
 \end{document}
