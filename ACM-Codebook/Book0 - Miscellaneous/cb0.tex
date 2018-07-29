@@ -1,10 +1,10 @@
 \input{../shared/head.tex}
+\setCJKmainfont{SimSun}
 \newcommand{\BookNo}{0}
 \newcommand{\BookTitle}{Miscellaneous}
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
-\setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
@@ -64,6 +64,16 @@ Automaton for multi-pattern matching. \par
 \Require{trie} \par
 \textbf{Time complexity:} $O(l|\Sigma|)$ for insertion and construction, $O(l)$ for finding, provided the number of suffixes of a word is constant. \par
 \lstinputlisting[language=c++]{string/aho-corasick.cpp}
+
+\subsection{Manacher}
+Find maximum palindrome radii for all centers. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2.5cm} p{9cm}}
+  \lstinline|init(str)| & Run this algorithm on \lstinline|str|.  \\
+  \lstinline|maxpar(l, r)| & Query maximal palindrome central region between $[l, r)$. \\
+\end{tabular} \par
+\textbf{Time complexity:} Linear in length of string. \par
+\lstinputlisting[language=c++]{string/manacher.cpp}
 
 \section{Game Theory}
 \subsection{Nim games}

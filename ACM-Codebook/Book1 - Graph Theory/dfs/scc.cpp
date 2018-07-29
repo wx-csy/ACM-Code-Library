@@ -14,8 +14,7 @@ struct graph{
     void dfs(int u){
         pre[u] = lnk[u] = ++time;
         s.push(u);
-        rep (i, adj[u].size()){
-            int v = adj[u][i];
+        for (int v : adj[u]){
             if (!pre[v]){
                 dfs(v);
                 lnk[u] = min(lnk[u], lnk[v]);
@@ -35,8 +34,8 @@ struct graph{
 
     void find_scc(){
         time = sccn = 0;
-        memset(scc, 0, sizeof(scc));
-        memset(pre, 0, sizeof(pre));
+        memset(scc, 0, sizeof scc);
+        memset(pre, 0, sizeof pre);
         Rep (i, V){
             if (!pre[i]) dfs(i);
         }
