@@ -161,6 +161,27 @@ Compute the basis over $\mathbb{F}_2$ field. \par
 \lstinputlisting[language=c++]{linear-algebra/linearbasis.cpp}
 
 \section{Combinatorics}
+\subsection{Twelvefold Way}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  $A (n)$ & $B (m)$ & $f$ & number of $f$ \\ \hline
+  dist. & dist. & - & $m^n$ \\ \hline
+  dist. & dist. & inj. & $m^{\underline{n}}$ \\ \hline
+  dist. & dist. & surj. & $m! S(n, m)$ \\ \hline
+  dist. & id. & - & $\sum_{i=1}^m S(n, i)$ \\ \hline
+  dist. & id. & inj. & $[n \leq m]$ \\ \hline
+  dist. & id. & surj. & $S(n, m)$ \\ \hline
+  id. & dist. & - & $\binom{n+m-1}{n}$ \\ \hline
+  id. & dist. & inj. & $\binom{m}{n}$ \\ \hline
+  id. & dist. & surj. & $\binom{n-1}{m-1}$ \\ \hline
+  id. & id. & - & $\sum_{i=1}^m p_i(n)$ \\ \hline
+  id. & id. & inj. & $[n \leq m]$ \\ \hline
+  id. & id. & surj. & $p_m(n)$ \\ \hline
+  \end{tabular}
+\end{table}
+
 \subsection{M\"{o}bius inversion}
 M\"{o}bius function:
 $$ \mu(n) = \begin{cases} 1 & \text{if } n=1  \\ 0 & \text{if } {p_i}^{a_i} \mid n \text{ where } a_i > 0 \\ (-1)^r & \text{if } n \text{ is the product of } r \text{ distinct primes} \end{cases} $$
