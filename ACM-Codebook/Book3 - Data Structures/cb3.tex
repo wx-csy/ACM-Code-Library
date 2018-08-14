@@ -4,7 +4,7 @@
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
-\setCJKmainfont{SimSun}
+%\setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
@@ -89,5 +89,15 @@ See comments in code.
 
 \subsection{Segment Tree}
 \lstinputlisting[language=c++]{segtree/segtree.cpp}
+
+\subsection{Persistent Array}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4cm} p{7.5cm}}
+  \lstinline|build(l, r)| & Build an array with indices $[l, r)$. \textbf{Remember to rewind \lstinline|pos| when reusing memory pool!}\\
+  \lstinline|access(l, r, pos)| & Access the position with index \lstinline|pos|.\\
+  \lstinline|update(l, r, pos, val)| & Change the value at \lstinline|pos| to \lstinline|val|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(\log n)$ per operation. \par
+\lstinputlisting[language=c++]{tree/persistent_array.cpp}
 
 \end{document}

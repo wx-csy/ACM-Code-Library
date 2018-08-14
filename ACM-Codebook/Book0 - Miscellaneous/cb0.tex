@@ -92,6 +92,29 @@ Find maximum palindrome radii for all centers. \par
 %  * := \{0|0\}
 %\end{align}
 
+\section{Dynamic Programming Optimization}
+
+\subsection{Knuth's Optimization}
+Knuth's optimization is applicable for the dynamic programming of the form
+$$\mathrm{dp}[i][j] = \min_{i < k < j} \{\mathrm{dp}[i][k] + \mathrm{dp}[k][j]\} + C[i][j]$$
+whenever $A[i][j-1] \leq A[i][j] \leq A[i+1][j]$.
+
+A sufficient condition for Knuth's optimization is that $C$ follows the monotonicity and quadrangle inequality:
+
+\begin{description}
+  \item[monotonicity] $C[a][d] \leq C[b][c], a \leq b \leq c \leq d$;
+  \item[quadrangle inequality] $C[a][c] + C[b][d] \leq C[a][d] + C[b][c], a \leq b \leq c \leq d$.
+\end{description}
+
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|n| & the total length of the array (0-based) \\
+  \lstinline|cost| & function $C$ \\
+  \lstinline|dp| & the result of dynamic programming \\
+  \lstinline|dc| & decision point
+\end{tabular} \par
+\textbf{Time complexity:} $O(n^2)$. \par
+\lstinputlisting[language=c++]{dp/knuth.cpp}
 
 \section{Others}
 \subsection{Fast Fourier transform}
