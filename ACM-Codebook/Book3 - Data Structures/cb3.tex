@@ -87,15 +87,15 @@ See comments in code.
 
 \lstinputlisting[language=c++]{tree/ordertree.cpp}
 
-\subsection{Segment Tree}
-\lstinputlisting[language=c++]{segtree/segtree.cpp}
+%\subsection{Segment Tree}
+%\lstinputlisting[language=c++]{segtree/segtree.cpp}
 
 \subsection{Persistent Array}
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{4cm} p{7.5cm}}
-  \lstinline|build(l, r)| & Build an array with indices $[l, r)$. \textbf{Remember to rewind \lstinline|pos| when reusing memory pool!}\\
-  \lstinline|access(l, r, pos)| & Access the position with index \lstinline|pos|.\\
-  \lstinline|update(l, r, pos, val)| & Change the value at \lstinline|pos| to \lstinline|val|. \\
+  \lstinline|init(size, il)| & (Re)initialize an array of size \lstinline|size| and initial values \lstinline|il|. \\
+  \lstinline|access(pos)| & Access the position with index \lstinline|pos|.\\
+  \lstinline|update(pos, val)| & Change the value at \lstinline|pos| to \lstinline|val|. \\
 \end{tabular} \par
 \textbf{Time complexity:} $O(\log n)$ per operation. \par
 \lstinputlisting[language=c++]{tree/persistent_array.cpp}

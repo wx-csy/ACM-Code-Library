@@ -160,9 +160,19 @@ Compute the basis over $\mathbb{F}_2$ field. \par
 \textbf{Time complexity:} $O(d)$ per operation. \par
 \lstinputlisting[language=c++]{linear-algebra/linearbasis.cpp}
 
+\subsection{Berlekamp-Massey algorithm}
+Compute the minimal polynomial of a linearly recurrent sequence over some finite field $\mathbb{F}_p$. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{2cm} p{9.5cm}}
+  \lstinline|solve(v)| & Compute the minimum polynomial. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n^2)$. \par
+\lstinputlisting[language=c++]{linear-algebra/berlekamp-massey.cpp}
+\clearpage
+
 \section{Combinatorics}
 \subsection{Twelvefold Way}
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
   \hline
