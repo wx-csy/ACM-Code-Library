@@ -45,15 +45,15 @@
 \lstinputlisting[language=c++]{misc/bit_rurq.cpp}
 
 \section{Miscellaneous Data Structures}
-\subsection{Union-find set}
-Data structure for disjoint sets with path-compression optimization. \par
-\textbf{Usage:} \\[0.1cm]
-\begin{tabular}{p{2cm} p{9.5cm}}
-  \lstinline|init(n)| & Initialize the sets from 0 to $n$, each includes one element. \\
-  \lstinline|find(x)| & Return the representative of the set containing $x$. \\
-  \lstinline|unite(u, v)| & Unite the two sets containing $u$ and $v$. Return \lstinline|false| if $u$ and $v$ are already in the same set; otherwise \lstinline|true|. \\
-\end{tabular} \par
-\lstinputlisting[language=c++]{misc/ufs.cpp}
+%\subsection{Union-find set}
+%Data structure for disjoint sets with path-compression optimization. \par
+%\textbf{Usage:} \\[0.1cm]
+%\begin{tabular}{p{2cm} p{9.5cm}}
+%  \lstinline|init(n)| & Initialize the sets from 0 to $n$, each includes one element. \\
+%  \lstinline|find(x)| & Return the representative of the set containing $x$. \\
+%  \lstinline|unite(u, v)| & Unite the two sets containing $u$ and $v$. Return \lstinline|false| if $u$ and $v$ are already in the same set; otherwise \lstinline|true|. \\
+%\end{tabular} \par
+%\lstinputlisting[language=c++]{misc/ufs.cpp}
 
 \subsection{Sparse table, range extremum query (RMQ)}
 \textbf{Usage:} \\[0.1cm]
@@ -90,7 +90,7 @@ See comments in code.
 %\subsection{Segment Tree}
 %\lstinputlisting[language=c++]{segtree/segtree.cpp}
 
-\subsection{Persistent Array}
+\subsection{Persistent array}
 \textbf{Usage:} \\[0.1cm]
 \begin{tabular}{p{4cm} p{7.5cm}}
   \lstinline|init(size, il)| & (Re)initialize an array of size \lstinline|size| and initial values \lstinline|il|. \\
@@ -99,5 +99,16 @@ See comments in code.
 \end{tabular} \par
 \textbf{Time complexity:} $O(\log n)$ per operation. \par
 \lstinputlisting[language=c++]{tree/persistent_array.cpp}
+
+\subsection{Persistent union-find set}
+Persistent union-find set with union-by-rank. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4cm} p{7.5cm}}
+  \lstinline|init(size)| & (Re)initialize a ufs of size \lstinline|size| with indices $[0, \mathrm{size})$. \\
+  \lstinline|find(pos)| & Get the parent of \lstinline|pos|.\\
+  \lstinline|unite(u, v)| & Unite the two sets containing \lstinline|u|, \lstinline|v|. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(\log^2 n)$ per operation. \par
+\lstinputlisting[language=c++]{tree/persistent_ufs.cpp}
 
 \end{document}
