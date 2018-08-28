@@ -11,7 +11,7 @@ ULL PollardRho(ULL n){
             x = (mulmod(x, x, n) + c) % n;
             y = (mulmod(y, y, n) + c) % n;
             y = (mulmod(y, y, n) + c) % n;
-            d = gcd(x-y>0 ? x-y : y-x, n);
+            d = gcd(x>y ? x-y : y-x, n);
         }
     }
     return d;

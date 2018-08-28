@@ -4,7 +4,7 @@
 \begin{document}
 \input{../shared/cover.tex}
 \setmainfont{Times New Roman}
-\setCJKmainfont{SimSun}
+% \setCJKmainfont{SimSun}
 \setlength{\parskip}{0.0in}
 \tableofcontents
 \setlength{\parskip}{0.1in}
@@ -82,8 +82,8 @@ The array \lstinline|a[]| (excluding sentinel, e.g. \lstinline|LLONG_MAX|) shoul
 \end{tabular} \par
 \textbf{Time complexity:} Linear. \par
 \lstinputlisting[language=c++]{number-theory/euler_sieve.cpp}
-This technique can also be used to compute multiplicative functions. For example, the following program computes the Euler's totient function.
-\lstinputlisting[language=c++]{number-theory/euler_sieve_totient.cpp}
+This technique can also be used to compute multiplicative functions.
+\lstinputlisting[language=c++]{number-theory/euler_sieve_mult.cpp}
 
 \subsection{Integer factorization (Pollard's rho algorithm)}
 Find a nontrivial factor of a composite integer. One can recursively call this procedure to complete the factorization, by divide and conquer. \par

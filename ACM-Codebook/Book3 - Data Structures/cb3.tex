@@ -111,4 +111,13 @@ Persistent union-find set with union-by-rank. \par
 \textbf{Time complexity:} $O(\log^2 n)$ per operation. \par
 \lstinputlisting[language=c++]{tree/persistent_ufs.cpp}
 
+\subsection{Persistent segment tree; Range nth element query}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4cm} p{7.5cm}}
+  \lstinline|init(size)| & (Re)initialize with indices $[0, \mathrm{size})$. \\
+  \lstinline|inc(pos)| & Increment element with index \lstinline|pos|.\\
+  \lstinline|query(l, r, k)| & Find the $k$-th element between versions $l$ and $r$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(\log n)$ per operation. \par
+\lstinputlisting[language=c++]{tree/persistent_segtree.cpp}
 \end{document}

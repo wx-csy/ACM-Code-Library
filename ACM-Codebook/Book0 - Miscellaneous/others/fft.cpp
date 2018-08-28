@@ -2,12 +2,6 @@ const int NMAX = 1<<20;
 
 typedef complex<double> cplx;
 
-inline cplx operator * (cplx a, cplx b) {
-  double ra = a.real(), rb = b.real(),
-         ia = a.imag(), ib = b.imag();
-  return cplx(ra*ia-rb*ib, ra*ib+rb*ia);
-}
-
 const double PI = 2*acos(0.0);
 struct FFT{
     int rev[NMAX];
@@ -46,15 +40,5 @@ struct FFT{
         rep (i, N) a[i] *= b[i];
         ifft(a);
     }
-
-    void convr(cplx* a, cplx* b) {
-      rep (i, N) b[i].imag(a[i]);
-      fft(b);
-      rep (i, N) {
-        cplx lv = b[i], rv = conj(b[N-1-i]);
-        a[i] = (lv * lv + rv * rv) * cplx(0, -0.25);
-      }
-      ifft(a);
-    } 
 };
 
