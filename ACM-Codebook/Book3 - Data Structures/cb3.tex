@@ -120,4 +120,14 @@ Persistent union-find set with union-by-rank. \par
 \end{tabular} \par
 \textbf{Time complexity:} $O(\log n)$ per operation. \par
 \lstinputlisting[language=c++]{tree/persistent_segtree.cpp}
+
+\section{Block Decomposition}
+\subsection{Range nth element query (Block + bitset)}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{4cm} p{7.5cm}}
+  \lstinline|query(l, r, k)| & Find the $k$-th element between versions $l$ and $r$. \\
+\end{tabular} \par
+\textbf{Performance:} Comparable to persistent segment tree up to $10^5$ operations. \par
+\lstinputlisting[language=c++]{block/kth.cpp}
 \end{document}
+
