@@ -87,6 +87,7 @@ This technique can also be used to compute multiplicative functions.
 
 \subsection{Integer factorization (Pollard's rho algorithm)}
 Find a nontrivial factor of a composite integer. One can recursively call this procedure to complete the factorization, by divide and conquer. \par
+\Warning Please use Miller-Rabin to test primality of the input; for prime input, the algorithm may trap into infinite loop. \par
 \textbf{Time complexity:} Believed to be $O(n^{1/4})$ in expectation. \par
 \lstinputlisting[language=c++]{number-theory/pollard-rho.cpp}
 

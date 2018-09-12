@@ -8,7 +8,7 @@ bool test(LL n){
         x = powmod(a[i], d, n);
         if (x == 1 || x == n-1) goto next;
         rep (i, r) {
-            x = (x * x) % n;
+            x = mulmod(x, x, n);
             if (x == n-1) goto next;
         }
         return false;
