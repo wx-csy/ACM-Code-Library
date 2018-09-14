@@ -121,6 +121,21 @@ Persistent union-find set with union-by-rank. \par
 \textbf{Time complexity:} $O(\log n)$ per operation. \par
 \lstinputlisting[language=c++]{tree/persistent_segtree.cpp}
 
+\subsection{Dynamic tree connectivity; link/cut tree}
+Maintaining dynamic tree connectivity as well as supporting path aggregation. \par
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8.5cm}}
+  \lstinline|Root(u)| & Query the root of \lstinline|u| in represented tree. \\
+  \lstinline|Link(u, v)| & Add edge between \lstinline|u| and \lstinline|v|. The edge must not exist before. \\
+  \lstinline|Cut(u, v)| & Remove edge between \lstinline|u| and \lstinline|v|. The edge must exist before. \\
+  \lstinline|Query(u, v)| & Query path aggregation value between \lstinline|u| and \lstinline|v|. \\
+  \lstinline|Update(u, x)| & Update node value of \lstinline|u| to \lstinline|x|. \\
+\end{tabular} \par
+Rewrite \lstinline|pull(x)| to customize aggregation function. \par
+\Warning All indices are numbered from 1. \par
+\textbf{Time complexity:} Amortized $O(\log n)$ per operation. \par
+\lstinputlisting[language=c++]{tree/lct.cpp}
+
 \section{Block Decomposition}
 \subsection{Range nth element query (Block + bitset)}
 \textbf{Usage:} \\[0.1cm]
