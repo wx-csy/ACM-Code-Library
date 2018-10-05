@@ -141,6 +141,15 @@ Some smallest solutions to Pell's equation:
 %$$ \left( \frac{a}{p} \right) = \begin{cases} 0 & \text{if } p \mid a \\ 1 & \text{if } p \nmid a \text{ and } a \text{ is a quadratic residue modulo } p \\ p-1 & \text{if } p \nmid a \text{ and } a \text{ is a quadratic non-residue modulo } p \end{cases} $$
 %Call \lstinline|powmod(a, (p-1)/2, p)| to calculate Legendre symbol.
 \section{Linear Algebra}
+\subsection{Gauss elimination over finite field}
+\textbf{Usage:} \\[0.1cm]
+\begin{tabular}{p{3cm} p{8.5cm}}
+  \lstinline|a| & The matrix $a$. \\
+  \lstinline|b| & The vector $b$. \\
+\end{tabular} \par
+\textbf{Time complexity:} $O(n^3)$ \par
+\lstinputlisting[language=c++]{linear-algebra/gauss.cpp}
+
 \subsection{Modular exponentiation of matrices}
 Calculate $b^e \bmod modular$, where $b$ is a matrix. The modulus is element-wise.\par
 \textbf{Usage:} \\[0.1cm]

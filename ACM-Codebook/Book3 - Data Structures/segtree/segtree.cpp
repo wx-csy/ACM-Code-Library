@@ -1,58 +1,87 @@
-#define lson 2*
-#define rson 1+2*
+LL p;
+const int MAXN = 4 * 100006;
+struct segtree {
+  int l[MAXN], m[MAXN], r[MAXN];
+  LL val[MAXN], tadd[MAXN], tmul[MAXN];
 
-const int MAXN = 100005;
+#define lson (o<<1)
+#define rson (o<<1|1)
 
-LL a[MAXN];
-LL ans[MAXN * 4], tag[MAXN * 4];
+  void pull(int o) {
+    val[o] = (val[lson] + val[rson]) % p;
+  }
 
-inline void push_up(int p) {
-    ans[p] = ans[lson p] + ans[rson p];
-}
+  void push_add(int o, LL x) {
+    val[o] = (val[o] + x * (r[o] - l[o])) % p;
+    tadd[o] = (tadd[o] + x) % p;
+  }
+    
+  void push_mul(int o, LL x) {
+    val[o] = val[o] * x % p;
+    tadd[o] = tadd[o] * x % p;
+    tmul[o] = tmul[o] * x % p;
+  }
 
-inline void func(int p, int l, int r, LL x) {
-    tag[p] += x;
-    ans[p] += (r - l + 1) * x;
-}
-
-inline void push_down(int p, int l, int r) {
-    int mid = (l+r) / 2;
-    func(lson p, l, mid, tag[p]);
-    func(rson p, mid+1, r, tag[p]);
-    tag[p] = 0;
-}
-
-void build(int p, int l, int r) {
-    tag[p] = 0;
-    if (l == r) {
-        ans[p] = a[l];
-        return;
+  void push(int o) {
+    if (l[o] == m[o]) return;
+    if (tmul[o] != 1) {
+      push_mul(lson, tmul[o]);
+      push_mul(rson, tmul[o]);
+      tmul[o] = 1;
     }
-    int mid = (l+r)/2;
-    build(lson p, l, mid);
-    build(rson p, mid+1, r);
-    push_up(p);
-}
-
-void update(int ll, int rr, int l, int r, int p, LL x) {
-    if (ll <= l && r <= rr) {
-        ans[p] += (r - l + 1) * x;
-        tag[p] += x;
-        return;
+    if (tadd[o]) {
+      push_add(lson, tadd[o]);
+      push_add(rson, tadd[o]);
+      tadd[o] = 0;
     }
-    push_down(p, l, r);
-    int mid = (l + r) / 2;
-    if (ll <= mid) update(ll, rr, l, mid, lson p, x);
-    if (rr > mid) update(ll, rr, mid+1, r, rson p, x);
-    push_up(p);
-}
+  }
 
-LL query(int ll, int rr, int l, int r, int p) {
-    LL ret = 0;
-    if (ll <= l && r <= rr) return ans[p];
-    int mid = (l+r)/ 2;
-    push_down(p, l, r);
-    if (ll <= mid) ret += query(ll, rr, l, mid, lson p);
-    if (rr > mid) ret += query(ll, rr, mid+1, r, rson p);
-    return ret;
-}
+  void build(int o, int ll, int rr) {
+    int mm = (ll + rr) / 2;
+    l[o] = ll; r[o] = rr; m[o] = mm;
+    tmul[o] = 1;
+    if (ll == mm) {
+      scanf("%lld", val + o);
+      val[o] %= p;
+    } else {
+      build(lson, ll, mm);
+      build(rson, mm, rr);
+      pull(o);
+    }
+  }
+
+  void add(int o, int ll, int rr, LL x) {
+    if (ll <= l[o] && r[o] <= rr) {
+      push_add(o, x);
+    } else {
+      push(o);
+      if (m[o] > ll) add(lson, ll, rr, x);
+      if (m[o] < rr) add(rson, ll, rr, x);
+      pull(o);
+    }
+  }
+
+  void mul(int o, int ll, int rr, LL x) {
+    if (ll <= l[o] && r[o] <= rr) {
+      push_mul(o, x);
+    } else {
+      push(o);
+      if (ll < m[o]) mul(lson, ll, rr, x);
+      if (m[o] < rr) mul(rson, ll, rr, x);
+      pull(o);
+    }
+  }
+
+  LL query(int o, int ll, int rr) {
+    if (ll <= l[o] && r[o] <= rr) {
+      return val[o];
+    } else {
+      LL ans = 0;
+      push(o);
+      if (m[o] > ll) ans += query(lson, ll, rr);
+      if (m[o] < rr) ans += query(rson, ll, rr);
+      return ans % p;
+    }
+  } 
+} seg;
+
