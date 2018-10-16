@@ -2,16 +2,15 @@
 using namespace std;
 
 typedef int T;
-typedef struct pt{
+typedef struct pt {
     T x, y;
-    pt(T _x = 0, T _y = 0) : x(_x), y(_y){}
-    inline T operator , (pt a){return x*a.x + y*a.y;} // inner product
-    inline T operator * (pt a){return x*a.y - y*a.x;} // outer product
-    inline pt operator + (pt a){return pt(x+a.x, y+a.y);}
-    inline pt operator - (pt a){return pt(x-a.x, y-a.y);}
+    T operator , (pt a) { return x*a.x + y*a.y; } // inner product
+    T operator * (pt a) { return x*a.y - y*a.x; } // outer product
+    pt operator + (pt a) { return {x+a.x, y+a.y}; }
+    pt operator - (pt a) { return {x-a.x, y-a.y}; }
 
-    inline pt operator * (T k){return pt(x*k, y*k);}
-    inline pt operator - (){return pt(-x, -y);}
+    pt operator * (T k) { return {x*k, y*k}; }
+    pt operator - () { return {-x, -y};}
 } vec;
 
 typedef pair<pt, pt> seg;
@@ -78,7 +77,8 @@ inline pt getIntersection(pt P, vec v, pt Q, vec w){
 // 1  inside the polygon
 int ptOnPoly(pt p, pt* poly, int n){
     int wn = 0;
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
+      
         T k, d1 = poly[i].y - p.y, d2 = poly[(i+1)%n].y - p.y;
         if (k = (poly[(i+1)%n] - poly[i])*(p - poly[i])){
             if (k > 0 && d1 <= 0 && d2 > 0) wn++;
